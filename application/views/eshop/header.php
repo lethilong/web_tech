@@ -90,7 +90,7 @@
 								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="<?=ROOT?>user/login"><i class="fa fa-lock"></i> Login</a></li>
 							</ul>
 						</div>
 					</div>

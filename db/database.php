@@ -66,7 +66,7 @@ Class Database
 
 		$stm = self::$con->prepare($query);
 		$result = $stm->execute($data);
-
+		printf($result);
 		if($result){
 			 
 			return true;
