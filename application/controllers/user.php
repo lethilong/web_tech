@@ -18,7 +18,7 @@ Class User extends Controller
     public function login() {
         $data['page-title'] = "Login";
         if($_SERVER['REQUEST_METHOD'] == "POST")
-		{	
+		{
 			$user = $this->load_model("User");
 			$user->login($_POST);
 		}
@@ -29,5 +29,5 @@ Class User extends Controller
         $user = $this->load_model("User");
 		$user->logout();
     }
-   
+
 }
