@@ -2,6 +2,11 @@
 
 Class Product
 {
+  private $db;
+
+  public function __construct() {
+    $this->db = Database::newInstance();
+  }
 
 
 	public function create($DATA,$FILES,$image_class = null)
@@ -175,7 +180,7 @@ Class Product
 		$DB->write($query);
 	}
 
-	public function get_all()
+	public function getAllProds()
 	{
 
 		$DB = Database::newInstance();
@@ -183,7 +188,26 @@ Class Product
 
 	}
 
-	public function make_table($cats,$model = null)
+  public function getProdById($id) {
+    $sql = 'select * from products where id = :id';
+    $this->db->read($sql, ['id'=>$id]);
+  }
+
+  public function getProdBySlag($slag) {
+    $this->db->read('select * from products where slag = :slag', ['slag'=>$slag]);
+  }
+
+  public function getProdByCat($catId) {
+    $sql = 'select * from products where category = :id';
+    $this->db->read($sql, ['id'=>$catId]);
+  }
+
+  public function search($search) {
+    $sql = "select * from products where name like '%$search' or description like '%$search'";
+    $this->db->read($sql);
+  }
+
+	public function makeTable($cats,$model = null)
 	{
 
 		$result = "";
@@ -233,7 +257,7 @@ Class Product
 	}
 
 
-	public function str_to_url($url) {
+	public function strToURL($url) {
 	   $url = preg_replace('~[^\\pL0-9_]+~u', '-', $url);
 	   $url = trim($url, "-");
 	   $url = iconv("utf-8", "us-ascii//TRANSLIT", $url);

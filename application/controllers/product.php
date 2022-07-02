@@ -9,7 +9,7 @@ class Product extends Controller {
   public function index() {
     $data['page-title'] = 'Products';
     $data['products'] = $this->productModel->get_all();
-    this->view('product', $data);
+    this->view('products', $data);
   }
 
   public function create() {
