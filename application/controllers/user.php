@@ -12,7 +12,7 @@ Class User extends Controller
 			$user->signup($_POST);
 		}
 
-        $this->view("signup");
+        $this->view("users/signup");
     }
 
     public function login() {
@@ -22,7 +22,7 @@ Class User extends Controller
 			$user = $this->load_model("User");
 			$user->login($_POST);
 		}
-        $this->view("login", $data);
+        $this->view("users/login", $data);
     }
 
     public function logout() {

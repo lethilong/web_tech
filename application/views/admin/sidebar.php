@@ -8,18 +8,18 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
 
-              	  <p class="centered"><a href="profile.html"><img src="<?=ASSETS . THEME ?>admin/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-                  <h5 class="centered"><?=$data['user_data']->name?></h5>
-              	  <h5 class="centered" style="font-size: 11px;"><?=$data['user_data']->email?></h5>
+              	  <!-- <p class="centered"><a href="profile.html"><img src="<?=ASSETS . THEME ?>admin/img/ui-sam.jpg" class="img-circle" width="60"></a></p> -->
+                  <!-- <h5 class="centered"><?=$data['user_data']->name?></h5> -->
+              	  <!-- <h5 class="centered" style="font-size: 11px;"><?=$data['user_data']->email?></h5> -->
 
 
-                  <!-- <li class="sub-menu">
+                  <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-dashboard"></i>
                           <span>Dashboard</span>
                       </a>
 
-                  </li> -->
+                  </li>
 
                   <li class="sub-menu">
                       <a <?=(isset($current_page) && $current_page == "products") ? ' class="active" ':''; ?> href="<?=ROOT?>admin/products" >
@@ -56,13 +56,13 @@
                        </ul>
                   </li>
 
-                  <li class="sub-menu">
+                  <!-- <li class="sub-menu">
                       <a <?=(isset($current_page) && $current_page == "messages") ? ' class="active" ':''; ?> href="<?=ROOT?>admin/messages" >
                           <i class="fa fa-envelope"></i>
                           <span>Messages</span>
                       </a>
 
-                  </li>
+                  </li> -->
 
 
                   <li class="sub-menu">

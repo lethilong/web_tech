@@ -1,8 +1,10 @@
 <?php
 Class Controller
 {
-    public function view($path)
-    {
+    public function view($path, $data = []) {
+        if(is_array($data)) {
+            extract($data);
+        }
         if(file_exists("./application/views/" . $path . ".php")) {
             include "./application/views/" . $path . ".php";
         } else {
@@ -10,8 +12,7 @@ Class Controller
         }
     }
 
-    public function load_model($model)
-	{
+    public function load_model($model) {
 
 		if(file_exists("./application/models/" . strtolower($model) . ".model.php"))
 		{

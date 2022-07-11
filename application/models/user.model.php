@@ -15,8 +15,8 @@ Class UserModel {
 		];
         $password2= trim($POST['password2']);
 
-        if(empty($data['name']) || !preg_match("/^[a-zA-Z]+$/", $data['name'])) {
-			$this->error .= "Họ và tên không hợp lệ <br>";
+        if(empty($data['name'])) {
+			$this->error .= "Họ và tên không được để trống <br>";
 		}
 
         if(empty($data['email']) || !preg_match("/^[a-zA-Z0-9_-]+@[a-zA-Z]+.[a-zA-Z]+$/", $data['email'])) {
@@ -28,7 +28,7 @@ Class UserModel {
 		}
 
         if(empty($data['address'])) {
-            $this->error .= "Địa chỉ không hợp lệ <br>";
+            $this->error .= "Địa chỉ không được để trống <br>";
         }
 
         if($data['password'] !== $password2)
@@ -60,14 +60,14 @@ Class UserModel {
 			$this->error .= "Số điện thoại đã được sử dụng <br>";
 		}
 
-        $data['token'] = $this->get_random_string_max(60);
+        $data['token'] = $this->getRandomStringMax(60);
 
 		$arr = false;
 		$sql = "select * from users where token = :token limit 1";
 		$arr['token'] = $data['token'];
 		$check = $db->read($sql, $arr);
 		if(is_array($check)) {
-			$data['token'] = $this->get_random_string_max(60);
+			$data['token'] = $this->getRandomStringMax(60);
 		}
 
         if($this->error == ""){
@@ -106,9 +106,15 @@ Class UserModel {
 			$sql = "select * from users where email = :email && password = :password limit 1";
  			$result = $db->read($sql, $data);
 			if(is_array($result)) {		
-			$_SESSION['token'] = $result[0]->token;	
-			header("Location: " . ROOT . "home");
-			die;
+				$_SESSION['token'] = $result[0]->token;
+				if ($result[0]->role == "admin") {
+					header("Location: " . ROOT . "admin");
+					die;
+				} else {
+					header("Location: " . ROOT . "home");
+					die;
+				}	
+				
 			}
 
 			$this->error .= "Email hoặc mật khẩu không đúng";
@@ -130,11 +136,73 @@ Class UserModel {
 		
 	}
 
-    public function getUser($url) {
-        
+    public function getUser($token) {
+		$db = Database::newInstance();
+		$arr = false;
+		$arr['token'] = addslashes($token);
+		$query = "select * from users where token = :token limit 1";
+		$result = $db->read($query, $arr);
+		if (is_array($result)) {
+			return $result[0];
+		}
+		return false;   
     }
 
-    private function get_random_string_max($length) {
+	public function getAllCustomers() {
+		$db = Database:: newInstance();
+		$arr = false;
+		$arr['role'] = "customer";
+		$query = "select * from users where role = :role";
+		$result = $db->read($query, $arr);
+		if (is_array($result)) {
+			return $result;
+		}
+		return false;
+	}
+
+	public function getAllAdmins() {
+		$db = Database:: newInstance();
+		$arr = false;
+		$arr['role'] = "admin";
+		$query = "select * from users where role = :role";
+		$result = $db->read($query, $arr);
+		if (is_array($result)) {
+			return $result;
+		}
+		return false;
+	}
+
+	public function checkLogin($allowed = array()) {
+		$db = Database::newInstance();
+		if (count($allowed) > 0) {
+			$arr['token'] = $_SESSION['token'];
+			$query = "select * from users where token = :token limit 1";
+			$result = $db->read($query, $arr);
+			if (is_array($result)) {
+				$result = $result[0];
+				if (in_array($result->role, $allowed)) {
+					return $result;
+				}
+			}
+
+			header("Location: ".ROOT."user/login");
+			die;
+		} else {
+			if (isset($_SESSION['token'])) {
+				$arr = false;
+				$arr['token'] = $_SESSION['token'];
+				$query = "select * from users where token = :token limit 1";
+				$result = $db->read($query, $arr);
+				if (is_array($result)) {
+					return $result[0];
+				}
+			}
+		}
+		return false;
+
+	}
+
+    private function getRandomStringMax($length) {
 
 		$array = array(0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
 		$text = "";

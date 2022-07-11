@@ -10,18 +10,18 @@
     <title><?=$page_title . ' - ' . WEBSITE_TITLE?></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="<?=ASSETS . THEME ?>admin/css/bootstrap.css" rel="stylesheet">
+    <link href="<?=ASSETS?>admin/css/bootstrap.css" rel="stylesheet">
     <!--external css-->
-    <link href="<?=ASSETS . THEME ?>admin/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="<?=ASSETS?>admin/font-awesome/css/font-awesome.css" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
-    <link href="<?=ASSETS . THEME ?>admin/css/style.css" rel="stylesheet">
-    <link href="<?=ASSETS . THEME ?>admin/css/style-responsive.css" rel="stylesheet">
+    <link href="<?=ASSETS?>admin/css/style.css" rel="stylesheet">
+    <link href="<?=ASSETS?>admin/css/style-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="<?=ASSETS . THEME ?>admin//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="<?=ASSETS . THEME ?>admin//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <script src="<?=ASSETS?>admin//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="<?=ASSETS?>admin//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
 
@@ -47,11 +47,11 @@
                     <!-- settings end -->
                     <!-- inbox dropdown start-->
                     <li id="header_inbox_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                        <!-- <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
                             <i class="fa fa-envelope-o"></i>
                             <span class="badge bg-theme">5</span>
-                        </a>
-                        <ul class="dropdown-menu extended inbox">
+                        </a> -->
+                        <!-- <ul class="dropdown-menu extended inbox">
                             <div class="notify-arrow notify-arrow-green"></div>
                             <li>
                                 <p class="green">You have 5 new messages</p>
@@ -107,7 +107,7 @@
                             <li>
                                 <a href="index.html#">See all messages</a>
                             </li>
-                        </ul>
+                        </ul> -->
                     </li>
                     <!-- inbox dropdown end -->
                 </ul>
@@ -118,7 +118,7 @@
                     <li><a class="logout" href="<?=ROOT?>">Website</a></li>
             	</ul>
                 <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="<?=ROOT?>logout">Logout</a></li>
+                    <li><a class="logout" href="<?=ROOT?>user/logout">Logout</a></li>
                 </ul>
 
             </div>
