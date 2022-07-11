@@ -8,7 +8,7 @@ Class Controller
         if(file_exists("./application/views/" . $path . ".php")) {
             include "./application/views/" . $path . ".php";
         } else {
-            include ".application/views/". THEME. "404.php";
+            include ".application/views/". "404.php";
         }
     }
 

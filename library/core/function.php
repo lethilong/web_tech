@@ -1,15 +1,13 @@
 <?php 
 
 
-function show($data)
-{
+function show($data) {
 	echo "<pre>";
 	print_r($data);
 	echo "</pre>";
 }
 
-function check_error()
-{
+function check_error() {
 
 	if(isset($_SESSION['error']) && $_SESSION['error'] != "")
 	{
