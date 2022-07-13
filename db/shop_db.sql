@@ -39,14 +39,18 @@ CREATE TABLE `categories` (
 --
 
 CREATE TABLE `products` (
-  `id` int(20) NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `description` varchar(500) NOT NULL,
-  `categoryId` int(20) NOT NULL,
+  `id` int(11) NOT NULL,
+  `user_url` varchar(60) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `category` int(11) NOT NULL,
   `price` double NOT NULL,
   `quantity` int(11) NOT NULL,
   `image` varchar(500) NOT NULL,
-  `date` datetime NOT NULL
+  `image2` varchar(500) DEFAULT NULL,
+  `image3` varchar(500) DEFAULT NULL,
+  `image4` varchar(500) DEFAULT NULL,
+  `date` datetime NOT NULL,
+  `slag` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -94,7 +98,13 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `categoryId` (`categoryId`);
+  ADD KEY `slag` (`slag`),
+  ADD KEY `date` (`date`),
+  ADD KEY `quantity` (`quantity`),
+  ADD KEY `price` (`price`),
+  ADD KEY `category` (`category`),
+  ADD KEY `description` (`description`),
+  ADD KEY `user_url` (`user_url`);
 
 --
 -- Indexes for table `users`
@@ -117,7 +127,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -133,7 +143,7 @@ ALTER TABLE `users`
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`categoryId`) REFERENCES `categories` (`id`);
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category`) REFERENCES `categories` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
