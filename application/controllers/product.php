@@ -19,8 +19,31 @@ class Product extends Controller {
         Redirect::to('product');
       } else {
         //$data['products'] = $this->productModel->getAllProd
-        $this->view('products.add', $data);
+        $this->view('products/add', $data);
       }
     }
+  }
+
+  public function update($id) {
+    $data['page-title'] = 'Edit Product';
+    $data['product'] = $this->productModel->getProdById($id);
+    if ($this->productModel->update($_POST, $_FILES)) {
+      Redirect::to('products');
+    } else $this->view('products/update', $data);
+  }
+
+  public function delete($id){
+    $delete =  $this->productModel->delete($id);
+    if($delete){
+        Redirect::to('products');
+    }
+  }
+
+  public function search() {
+    $data['page-title'] = 'All products';
+    $searched = $_POST['search'];
+    $results = $this->productModel->search($searched);
+    $data['products'] = $results;
+    $this->view('product/search', $data);
   }
 }
