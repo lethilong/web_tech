@@ -100,7 +100,7 @@ Class Product
 
 	}
 
-	public function update($data,$FILES,$image_class = null)
+	public function edit($data,$FILES,$image_class = null)
 	{
 
  		$arr['id'] = $data->id;
