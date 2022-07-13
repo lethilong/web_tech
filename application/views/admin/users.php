@@ -20,17 +20,19 @@
 <table class="table table-striped table-advance table-hover">
 
 	<thead>
-		<tr><th>User id</th><th>Name</th><th>Email</th><th>Date created</th><th>Orders count</th><th>...</th></tr>
+		<tr><th>User id</th><th>Name</th><th>Email</th><th>Date created</th>
+		<!-- <th>Orders count</th><th>...</th> -->
+	</tr>
 	</thead>
 	<tbody>
 		<?php if(isset($users) && is_array($users)):?>
 			<?php foreach($users as $user):?>
 
-				<tr style="position: relative;"><td><?=$user->id?></td><td><a href="<?=ROOT?>profile/<?=$user->url_address?>"><?=$user->name?></a></td><td><?=$user->email?></td><td><?=date("jS M Y H:i a",strtotime($user->date))?></td>
+				<tr style="position: relative;"><td><?=$user->id?></td><td><a href="<?=ROOT?>profile/<?=$user->token?>"><?=$user->name?></a></td><td><?=$user->email?></td><td><?=date("jS M Y H:i a",strtotime($user->date))?></td>
 
-					<td>
+					<!-- <td>
 						<?=$user->orders_count?>
-					</td>
+					</td> -->
 					<td>
 						
 					</td>

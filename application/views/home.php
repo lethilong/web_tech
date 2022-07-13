@@ -10,7 +10,7 @@
     <!-- Logout
 </button> -->
 <a href ="<?=ROOT?>user/logout">Logout</a>
-
+<?php date_default_timezone_set("Asia/Ho_Chi_Minh"); print_r(date("Y-m-d H:i:s")) ?>
 
 
 </html>

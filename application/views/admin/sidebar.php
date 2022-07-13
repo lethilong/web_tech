@@ -8,9 +8,9 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
 
-              	  <!-- <p class="centered"><a href="profile.html"><img src="<?=ASSETS . THEME ?>admin/img/ui-sam.jpg" class="img-circle" width="60"></a></p> -->
-                  <!-- <h5 class="centered"><?=$data['user_data']->name?></h5> -->
-              	  <!-- <h5 class="centered" style="font-size: 11px;"><?=$data['user_data']->email?></h5> -->
+              	  <p class="centered"><a href="profile.html"><img src="<?=ASSETS?>admin/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                  <h5 class="centered"><?=$data['user_data']->name?></h5>
+              	  <h5 class="centered" style="font-size: 11px;"><?=$data['user_data']->email?></h5>
 
 
                   <li class="sub-menu">
@@ -93,6 +93,8 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper site-min-height">
-            <h3><i class="fa fa-angle-right"></i><?= ucwords($data['page_title']) ?></h3>
+            <h3>
+                <!-- <i class="fa fa-angle-right"></i> -->
+            <?= ucwords($data['page_title']) ?></h3>
             <div class="row mt">
               <div class="col-lg-12">

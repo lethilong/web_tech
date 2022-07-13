@@ -4,6 +4,7 @@ Class UserModel {
 
     public function signup($POST) {
         $db = Database::getInstance();
+		date_default_timezone_set("Asia/Ho_Chi_Minh");
 
 		$data = [
 			"token" => "",
@@ -11,7 +12,8 @@ Class UserModel {
 			"email" => trim($POST['email']),
 			"phone" => trim($POST['phone']),
 			"address" => trim($POST['address']),
-			"password" => trim($POST['password'])
+			"password" => trim($POST['password']),
+			"date" => date("Y-m-d H:i:s")
 		];
         $password2= trim($POST['password2']);
 
@@ -73,7 +75,7 @@ Class UserModel {
         if($this->error == ""){
 			//save
 			$data['password'] = hash('sha1',$data['password']);
-			$sql = "insert into users (token, name, email, password, phone, address) values (:token, :name, :email, :password, :phone, :address)";
+			$sql = "insert into users (token, name, email, password, phone, address, date) values (:token, :name, :email, :password, :phone, :address, :date)";
 
 			$result = $db->write($sql, $data);
 
@@ -102,7 +104,6 @@ Class UserModel {
 
 		if($this->error == "") {
 			$data['password'] = hash('sha1',$data['password']);
-
 			$sql = "select * from users where email = :email && password = :password limit 1";
  			$result = $db->read($sql, $data);
 			if(is_array($result)) {		
