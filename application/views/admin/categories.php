@@ -37,6 +37,9 @@
 
 
 	</style>
+	<div class="zalo-chat-widget" data-oaid="4461409502325086296" data-welcome-message="Xin chào!" data-autopopup="0" data-width="" data-height=""></div>
+
+	<script src="https://sp.zalo.me/plugins/sdk.js"></script>
 	<div class="row mt">
                   <div class="col-md-12">
                       <div class="content-panel">
@@ -55,7 +58,7 @@
 			                              </div>
 			                          </div>
 			                          <br><br style="clear: both;"><br>
-			                          <div class="form-group">
+			                          <!-- <div class="form-group">
 			                              <label class="col-sm-2 col-sm-2 control-label">Parent (optional):</label>
 			                              <div class="col-sm-10">
 			                                  <select id="parent" name="parent"  class="form-control" required>
@@ -68,7 +71,7 @@
 			                              		<?php endif; ?>
 			                              	</select>
 			                              </div>
-			                          </div>
+			                          </div> -->
 
                	  	  					<button type="button" class="btn btn-warning" onclick="show_add_new(event)" style="position:absolute;bottom:10px; left:10px;">Close</button>
               	  	  					<button type="button" class="btn btn-primary" onclick="collect_data(event)" style="position:absolute;bottom:10px; right:10px;">Save</button>
@@ -123,8 +126,8 @@
                               <thead>
                               <tr>
                                   <th><i class="fa fa-bullhorn"></i> Category</th>
-                                   <th><i class=" fa fa-table"></i> Parent</th>
-                                   <th><i class=" fa fa-edit"></i> Status</th>
+                                   <!-- <th><i class=" fa fa-table"></i> Parent</th>
+                                   <th><i class=" fa fa-edit"></i> Status</th> -->
                                   <th><i class=" fa fa-edit"></i> Action</th>
                               </tr>
                               </thead>
