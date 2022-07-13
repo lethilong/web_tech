@@ -13,11 +13,11 @@ Class Controller
     }
 
     public function load_model($model) {
-
+        $model1=$model."Model";
 		if(file_exists("./application/models/" . strtolower($model) . ".model.php"))
 		{
 			include_once "./application/models/" . strtolower($model) . ".model.php";
-			return $a = new ($model."Model")();
+			return $a = new $model1();
 		}
 
 		return false;
