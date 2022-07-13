@@ -3,7 +3,7 @@
 <?php $this->view("admin/sidebar",$data); ?>
 
 	<style type="text/css">
-		
+
 		.add_edit_panel{
 
 			width: 500px;
@@ -13,7 +13,7 @@
 			position: absolute;
 			padding: 6px;
 		}
- 
+
 		.show{
 			display: block;
  		}
@@ -36,17 +36,17 @@
  			margin: 2px;
  			height: 80px;
  		}
- 		
+
 	</style>
 	<div class="row mt">
                   <div class="col-md-12">
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
 	                  	  	  <h4><i class="fa fa-angle-right"></i> Products <button class="btn btn-primary btn-xs" onclick="show_add_new(event)"><i class="fa fa-plus"></i> Add New</button></h4>
-	                  	  	  
+
 	                  	  	  <!--add new product-->
 	                  	  	  <div class="add_new add_edit_panel hide">
- 	                  	  	   
+
 				                  <h4 class="mb"><i class="fa fa-angle-right"></i> Add New Product</h4>
 			                      <form class="form-horizontal style-form" method="post">
 			                          <div class="form-group">
@@ -120,20 +120,20 @@
               	  	  						<img src="">
               	  	  						<img src="">
               	  	  						<img src="">
-              	  	  					</div>		                          
-              	  	  					
+              	  	  					</div>
+
               	  	  					<button type="button" class="btn btn-warning" onclick="show_add_new(event)" style="position:absolute;bottom:10px; left:10px;">Close</button>
               	  	  					<button type="button" class="btn btn-primary" onclick="collect_data(event)" style="position:absolute;bottom:10px; right:10px;">Save</button>
-			                   
+
 			                      </form>
- 					           
+
 					            <br><br>
 	                  	  	  </div>
 	                  	  	  <!--add new product end-->
 
 	                  	  	  <!--edit product-->
 	                  	  	  <div class="edit_product add_edit_panel hide" >
- 	                  	  	   
+
 				                  <h4 class="mb"><i class="fa fa-angle-right"></i> Edit Product</h4>
 			                      <form class="form-horizontal style-form" method="post">
 			                          <div class="form-group">
@@ -204,13 +204,13 @@
 			                          </div>
               	  	  					<br>
               	  	  					<div class="js-product-images-edit edit_product_images">
-              	  	  						
+
               	  	  					</div>
               	  	  					<button type="button" class="btn btn-warning" onclick="show_edit_product(0,'',false)" style="position:absolute;bottom:10px; left:10px;">Cancel</button>
               	  	  					<button type="button" class="btn btn-primary" onclick="collect_edit_data(event)" style="position:absolute;bottom:10px; right:10px;">Save</button>
-			                   
+
 			                      </form>
- 					           
+
 					            <br><br>
 	                  	  	  </div>
 	                  	  	  <!--edit product end-->
@@ -234,7 +234,7 @@
                               <tbody id="table_body">
 
                               	<?=$tbl_rows?>
-                             
+
                               </tbody>
                           </table>
                       </div><!-- /content-panel -->
@@ -242,14 +242,14 @@
               </div><!-- /row -->
 
 <script type="text/javascript">
-	
+
 	var EDIT_ID = 0;
 
 	function show_add_new()
 	{
 		var show_edit_box = document.querySelector(".add_new");
  		var product_input = document.querySelector("#description");
-		
+
 		if(show_edit_box.classList.contains("hide")){
 
  			show_edit_box.classList.remove("hide");
@@ -268,7 +268,7 @@
 
 		var show_add_box = document.querySelector(".edit_product");
 	 	var edit_description_input = document.querySelector("#edit_description");
-		
+
 		if(e){
 
 			var a = (e.currentTarget.getAttribute("info"));
@@ -288,15 +288,15 @@
 
 			var edit_price_input = document.querySelector("#edit_price");
 			edit_price_input.value = info.price;
-			
+
 			var product_images_input = document.querySelector(".js-product-images-edit");
 			product_images_input.innerHTML = `<img src="<?=ROOT?>${info.image}" />`;
 			product_images_input.innerHTML += `<img src="<?=ROOT?>${info.image2}" />`;
 			product_images_input.innerHTML += `<img src="<?=ROOT?>${info.image3}" />`;
 			product_images_input.innerHTML += `<img src="<?=ROOT?>${info.image4}" />`;
-		
+
 		}
-		
+
 
 		if(show_add_box.classList.contains("hide")){
 
@@ -348,7 +348,7 @@
 			alert("Please enter a valid main image");
 			return;
 		}
- 
+
  		//create a form
 		var data = new FormData();
 
@@ -369,7 +369,7 @@
 		{
 			data.append('image4',image4_input.files[0]);
 		}
-		
+
 
 		data.append('description',product_input.value.trim());
 		data.append('quantity',quantity_input.value.trim());
@@ -377,12 +377,12 @@
 		data.append('price',price_input.value.trim());
 		data.append('data_type','add_product');
 		data.append('image',image_input.files[0]);
- 
+
 		send_data_files(data);
-		 
+
 	}
 
-	
+
 	function collect_edit_data(e)
 	{
 
@@ -428,7 +428,7 @@
 		{
 			data.append('image2',image2_input.files[0]);
 		}
-		
+
 
  		var image3_input = document.querySelector("#edit_image3");
 		if(image3_input.files.length > 0)
@@ -441,7 +441,7 @@
 		{
 			data.append('image4',image4_input.files[0]);
 		}
-		
+
 
 		data.append('description',product_input.value.trim());
 		data.append('quantity',quantity_input.value.trim());
@@ -449,7 +449,7 @@
 		data.append('price',price_input.value.trim());
 		data.append('data_type','edit_product');
 		data.append('id',EDIT_ID);
- 
+
 		send_data_files(data);
 	}
 
@@ -459,7 +459,7 @@
 	{
 
  		var ajax = new XMLHttpRequest();
- 
+
 		ajax.addEventListener('readystatechange', function(){
 
 			if(ajax.readyState == 4 && ajax.status == 200)
@@ -468,7 +468,7 @@
 			}
 		});
 
-		ajax.open("POST","<?=ROOT?>ajax_product",true);
+		ajax.open("POST","<?=ROOT?>product/ajax",true);
 		ajax.send(JSON.stringify(data));
 	}
 
@@ -476,7 +476,7 @@
 	{
 
  		var ajax = new XMLHttpRequest();
- 
+
 		ajax.addEventListener('readystatechange', function(){
 
 			if(ajax.readyState == 4 && ajax.status == 200)
@@ -485,11 +485,11 @@
 			}
 		});
 
-		ajax.open("POST","<?=ROOT?>ajax_product",true);
+		ajax.open("POST","<?=ROOT?>product/ajax",true);
 		ajax.send(formdata);
 	}
 
-	
+
 
 	function handle_result(result)
 	{
@@ -526,7 +526,7 @@
 					}else{
 						alert(obj.message);
 					}
- 
+
 				}else
 				if(obj.data_type == "disable_row")
 				{
@@ -557,7 +557,7 @@
 		}else
 		if(name == "image3"){
 			index = 2;
-		}else 
+		}else
 		if(name == "image4"){
 			index = 3;
 		}
