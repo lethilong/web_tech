@@ -42,6 +42,7 @@ CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `token` varchar(60) NOT NULL,
   `description` varchar(200) NOT NULL,
+  `brand` varchar(66) NOT NULL,
   `category` int(11) NOT NULL,
   `price` double NOT NULL,
   `quantity` int(11) NOT NULL,
