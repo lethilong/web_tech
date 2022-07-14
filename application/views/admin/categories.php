@@ -44,7 +44,7 @@
                   <div class="col-md-12">
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
-	                  	  	  <h4><i class="fa fa-angle-right"></i> Product Categories <button class="btn btn-primary btn-xs" onclick="show_add_new(event)"><i class="fa fa-plus"></i> Add New</button></h4>
+	                  	  	  <h4><i class="fa fa-angle-right"></i>Categories <button class="btn btn-primary btn-xs" onclick="show_add_new(event)"><i class="fa fa-plus"></i> Add New</button></h4>
 	                  	  	  
 	                  	  	  <!--add new category-->
 	                  	  	  <div class="add_new hide">
@@ -94,7 +94,7 @@
 			                              </div>
 			                          </div>
               	  	  					<br><br style="clear: both;"><br>
-			                          <div class="form-group">
+			                          <!-- <div class="form-group">
 			                              <label class="col-sm-2 col-sm-2 control-label">Parent (optional):</label>
 			                              <div class="col-sm-10">
 			                                  <select id="parent_edit" name="parent"  class="form-control" required>
@@ -107,7 +107,7 @@
 			                              		<?php endif; ?>
 			                              	</select>
 			                              </div>
-			                          </div>
+			                          </div> -->
 
               	  	  					<button type="button" class="btn btn-warning" onclick="show_edit_category(0,'',event)" style="position:absolute;bottom:10px; left:10px;">Cancel</button>
               	  	  					<button type="button" class="btn btn-primary" onclick="collect_edit_data(event)" style="position:absolute;bottom:10px; right:10px;">Save</button>
@@ -163,7 +163,7 @@
 
 	}
 
-	function show_edit_category(id,category,parent,e)
+	function show_edit_category(id,category,e)
 	{
 
 		EDIT_ID = id;
@@ -173,9 +173,6 @@
 
  		var category_input = document.querySelector("#category_edit");
 		category_input.value = category;
-
-		var parent_input = document.querySelector("#parent_edit");
-		parent_input.value = parent;
 		
 		if(show_add_box.classList.contains("hide")){
 
@@ -199,17 +196,9 @@
 			alert("Please enter a valid category name");
 		}
 
-		var parent_input = document.querySelector("#parent");
-		if(isNaN(parent_input.value.trim()))
-		{
-			alert("Please enter a valid category name");
-		}
-
  		var category = category_input.value.trim();
- 		var parent = parent_input.value.trim();
 		send_data({
 			category:category,
-			parent:parent,
 			data_type:'add_category'
 		});
 	}
@@ -224,19 +213,11 @@
 			alert("Please enter a valid category name");
 		}
 
- 		var parent_input = document.querySelector("#parent_edit");
-		if(isNaN(parent_input.value.trim()))
-		{
-			alert("Please enter a valid category name");
-		}
-
 		var category = category_input.value.trim();
- 		var parent = parent_input.value.trim();
 
 		send_data({
 			id:EDIT_ID,
 			category:category,
-			parent:parent,
 			data_type:'edit_category'
 		});
 	}
