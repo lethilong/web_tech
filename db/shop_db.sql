@@ -40,7 +40,7 @@ CREATE TABLE `categories` (
 
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
-  `user_url` varchar(60) NOT NULL,
+  `token` varchar(60) NOT NULL,
   `description` varchar(200) NOT NULL,
   `category` int(11) NOT NULL,
   `price` double NOT NULL,
@@ -104,7 +104,7 @@ ALTER TABLE `products`
   ADD KEY `price` (`price`),
   ADD KEY `category` (`category`),
   ADD KEY `description` (`description`),
-  ADD KEY `user_url` (`user_url`);
+  ADD KEY `token` (`token`);
 
 --
 -- Indexes for table `users`
