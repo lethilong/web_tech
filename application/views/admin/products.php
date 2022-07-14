@@ -228,6 +228,7 @@
                                    <th>Category</th>
                                    <th>Price</th>
                                    <th>Date</th>
+                                   <th>Image</th>
                                   <th><i class=" fa fa-edit"></i> Action</th>
                               </tr>
                               </thead>

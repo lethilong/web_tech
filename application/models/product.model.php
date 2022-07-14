@@ -1,6 +1,6 @@
 <?php
 
-Class Product
+Class ProductModel
 {
   private $db;
 
@@ -241,7 +241,7 @@ Class Product
 						<td><a href="basic_table.html#">'.$cat_row->price.'</a></td>
 						<td><a href="basic_table.html#">'.date("jS M, Y H:i:s",strtotime($cat_row->date)).'</a></td>
 						<td><a href="basic_table.html#"><img src="'.ROOT . $cat_row->image.'" style="width:70px; height:70px;" /></a></td>
-	                  <td></td>
+
 	                  <td>
 
 	                      <button info="'.$info.'" onclick="show_edit_product('.$edit_args.',event)" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>

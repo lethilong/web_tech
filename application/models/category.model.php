@@ -47,11 +47,11 @@ class CategoryModel {
 
 				// $color = $cat_row->disabled ? "#ae7c04" : "#5bc0de";
 				// $cat_row->disabled = $cat_row->disabled ? "Disabled" : "Enabled";
-				
+
 				// $args = $cat_row->id.",'".$cat_row->disabled."'";
 				// $edit_args = $cat_row->id.",'".$cat_row->category."',".$cat_row->parent;
 				// $parent = "";
-				
+
 				// foreach ($cats as $cat_row2) {
 				// 	if($cat_row->parent == $cat_row2->id){
 				// 		$parent = $cat_row2->category;
@@ -59,7 +59,7 @@ class CategoryModel {
 				// }
 
  				$result .= "<tr>";
-				
+
 					$result .= '
 						<td><a href="basic_table.html#">'.$cat_row->category.'</a></td>
 	                    <td>
@@ -67,12 +67,41 @@ class CategoryModel {
                        		<button onclick="delete_row('.$cat_row->id.')" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
 	                  </td>
 					';
-						
+
 				$result .= "</tr>";
 			}
 		}
 
 		return $result;
+	}
+
+  public function get_one($id)
+	{
+
+		$id = (int)$id;
+
+		$DB = Database::newInstance();
+		$data = $DB->read("select * from categories where id = '$id' limit 1");
+		return $data[0];
+	}
+
+  public function get_one_by_name($name)
+	{
+
+		$name = addslashes($name);
+
+		$DB = Database::newInstance();
+		$data = $DB->read("select * from categories where category like :name limit 1",["name"=>$name]);
+		return $data[0];
+	}
+
+
+  public function get_all()
+	{
+
+		$DB = Database::newInstance();
+		return $DB->read("select * from categories order by id desc");
+
 	}
 
 
