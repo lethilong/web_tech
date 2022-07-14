@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 function show($data) {
@@ -14,4 +14,14 @@ function check_error() {
 		echo $_SESSION['error'];
 		unset($_SESSION['error']);
 	}
+}
+function esc($data)
+{
+	return addslashes($data);
+}
+
+function redirect($link)
+{
+	header("Location: " . ROOT . $link);
+	die;
 }
