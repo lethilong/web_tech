@@ -13,9 +13,17 @@
               	  <h5 class="centered" style="font-size: 11px;"><?=$data['user_data']->email?></h5>
 
 
-                  <li class="sub-menu">
+                  <!-- <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-dashboard"></i>
+                          <span>Dashboard</span>
+                      </a>
+
+                  </li> -->
+
+                  <li class="sub-menu">
+                      <a <?=(isset($current_page) && $current_page == "dashboard") ? ' class="active" ':''; ?> href="<?=ROOT?>admin" >
+                          <i class="fa fa-barcode"></i>
                           <span>Dashboard</span>
                       </a>
 

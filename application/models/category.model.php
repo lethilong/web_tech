@@ -63,9 +63,9 @@ class CategoryModel {
 					$result .= '
 						<td><a href="basic_table.html#">'.$cat_row->category.'</a></td>
 	                    <td>
-                        	<button onclick="show_edit_category('.$edit_args.',event)" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                        	<button onclick="show_edit_category('.$cat_row->id.",'".$cat_row->category.', event)" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
                        		<button onclick="delete_row('.$cat_row->id.')" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-	                  </td>
+	                  	</td>
 					';
 
 				$result .= "</tr>";

@@ -44,12 +44,12 @@
                   <div class="col-md-12">
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
-	                  	  	  <h4><i class="fa fa-angle-right"></i>Categories <button class="btn btn-primary btn-xs" onclick="show_add_new(event)"><i class="fa fa-plus"></i> Add New</button></h4>
+	                  	  	  <h4>Categories <button class="btn btn-primary btn-xs" onclick="show_add_new(event)"><i class="fa fa-plus"></i> Add New</button></h4>
 	                  	  	  
 	                  	  	  <!--add new category-->
 	                  	  	  <div class="add_new hide">
  	                  	  	   
-				                  <h4 class="mb"><i class="fa fa-angle-right"></i> Add New Category</h4>
+				                  <h4 class="mb">Add New Category</h4>
 			                      <form class="form-horizontal style-form" method="post">
 			                          <div class="form-group">
 			                              <label class="col-sm-2 col-sm-2 control-label">Category Name:</label>
@@ -58,21 +58,6 @@
 			                              </div>
 			                          </div>
 			                          <br><br style="clear: both;"><br>
-			                          <!-- <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Parent (optional):</label>
-			                              <div class="col-sm-10">
-			                                  <select id="parent" name="parent"  class="form-control" required>
-			                              		<option></option>
-			                              		<?php if(is_array($categories)): ?>
-				                              		<?php foreach($categories as $categ): ?>
-
-				                              			<option value="<?=$categ->id?>"><?=$categ->category?></option>
-				                              		<?php endforeach; ?>
-			                              		<?php endif; ?>
-			                              	</select>
-			                              </div>
-			                          </div> -->
-
                	  	  					<button type="button" class="btn btn-warning" onclick="show_add_new(event)" style="position:absolute;bottom:10px; left:10px;">Close</button>
               	  	  					<button type="button" class="btn btn-primary" onclick="collect_data(event)" style="position:absolute;bottom:10px; right:10px;">Save</button>
 			                   
@@ -85,7 +70,7 @@
 	                  	  	  <!--edit category-->
 	                  	  	  <div class="edit_category hide" >
  	                  	  	   
-				                  <h4 class="mb"><i class="fa fa-angle-right"></i> Edit Category</h4>
+				                  <h4 class="mb">Edit Category</h4>
 			                      <form class="form-horizontal style-form" method="post">
 			                          <div class="form-group">
 			                              <label class="col-sm-2 col-sm-2 control-label">Category Name:</label>
@@ -94,21 +79,6 @@
 			                              </div>
 			                          </div>
               	  	  					<br><br style="clear: both;"><br>
-			                          <!-- <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Parent (optional):</label>
-			                              <div class="col-sm-10">
-			                                  <select id="parent_edit" name="parent"  class="form-control" required>
-			                              		<option></option>
-			                              		<?php if(is_array($categories)): ?>
-				                              		<?php foreach($categories as $categ): ?>
-
-				                              			<option value="<?=$categ->id?>"><?=$categ->category?></option>
-				                              		<?php endforeach; ?>
-			                              		<?php endif; ?>
-			                              	</select>
-			                              </div>
-			                          </div> -->
-
               	  	  					<button type="button" class="btn btn-warning" onclick="show_edit_category(0,'',event)" style="position:absolute;bottom:10px; left:10px;">Cancel</button>
               	  	  					<button type="button" class="btn btn-primary" onclick="collect_edit_data(event)" style="position:absolute;bottom:10px; right:10px;">Save</button>
 			                   
@@ -125,7 +95,7 @@
 
                               <thead>
                               <tr>
-                                  <th><i class="fa fa-bullhorn"></i> Category</th>
+                                  <th>Category</th>
                                    <!-- <th><i class=" fa fa-table"></i> Parent</th>
                                    <th><i class=" fa fa-edit"></i> Status</th> -->
                                   <th><i class=" fa fa-edit"></i> Action</th>
@@ -145,8 +115,7 @@
 	
 	var EDIT_ID = 0;
 
-	function show_add_new()
-	{
+	function show_add_new() {
 		var show_edit_box = document.querySelector(".add_new");
  		var category_input = document.querySelector("#category");
 		
@@ -163,12 +132,10 @@
 
 	}
 
-	function show_edit_category(id,category,e)
-	{
+	function show_edit_category(id, category, e) {
 
 		EDIT_ID = id;
 		var show_add_box = document.querySelector(".edit_category");
-		//show_add_box.style.left = (e.clientX - 700) + "px";
 		show_add_box.style.top = (e.clientY - 100) + "px";
 
  		var category_input = document.querySelector("#category_edit");
@@ -187,8 +154,7 @@
 
 	}
 
-	function collect_data(e)
-	{
+	function collect_data(e) {
 
 		var category_input = document.querySelector("#category");
 		if(category_input.value.trim() == "" || !isNaN(category_input.value.trim()))
@@ -204,8 +170,7 @@
 	}
 
 	
-	function collect_edit_data(e)
-	{
+	function collect_edit_data(e) {
 
 		var category_input = document.querySelector("#category_edit");
 		if(category_input.value.trim() == "" || !isNaN(category_input.value.trim()))
@@ -224,8 +189,7 @@
 
 
 
-	function send_data(data = {})
-	{
+	function send_data(data = {}) {
 
  		var ajax = new XMLHttpRequest();
  
@@ -241,8 +205,7 @@
 		ajax.send(JSON.stringify(data));
 	}
 
-	function handle_result(result)
-	{
+	function handle_result(result) {
 
 		if(result != ""){
 			var obj = JSON.parse(result);
@@ -294,16 +257,14 @@
 		}
 	}
 
-	function edit_row(id)
-	{
+	function edit_row(id) {
 
  		send_data({
  			data_type: ""
  		});
 	}
 
-	function delete_row(id)
-	{
+	function delete_row(id) {
 
 		if(!confirm("Are you sure you want to delete this row?"))
 		{
@@ -316,8 +277,7 @@
  		});
 	}
 
-	function disable_row(id,state)
-	{
+	function disable_row(id,state) {
 		send_data({
  			data_type: "disable_row",
  			id:id,
