@@ -9,7 +9,7 @@ class CategoryModel
 		$DB = Database::newInstance();
 		$arr['category'] = ucwords($DATA->category);
 
-		if (!preg_match("/^[a-zA-Z ]+$/", trim($arr['category']))) {
+		if (!$arr['category']) {
 			$_SESSION['error'] = "Please enter a valid category name";
 		}
 
@@ -43,21 +43,6 @@ class CategoryModel
 		if (is_array($cats)) {
 			foreach ($cats as $cat_row) {
 				$edit_args = $cat_row->id . "," . $cat_row->category;
-				# code...
-
-				// $color = $cat_row->disabled ? "#ae7c04" : "#5bc0de";
-				// $cat_row->disabled = $cat_row->disabled ? "Disabled" : "Enabled";
-
-				// $args = $cat_row->id.",'".$cat_row->disabled."'";
-				// $edit_args = $cat_row->id.",'".$cat_row->category."',".$cat_row->parent;
-				// $parent = "";
-
-				// foreach ($cats as $cat_row2) {
-				// 	if($cat_row->parent == $cat_row2->id){
-				// 		$parent = $cat_row2->category;
-				// 	}
-				// }
-
 				$result .= "<tr>";
 
 				$result .= '
@@ -107,7 +92,7 @@ class CategoryModel
 		$arr['id'] = $data->id;
 		$arr['category'] = $data->category;
 		$DB = Database::newInstance();
-		if (!preg_match("/^[a-zA-Z ]+$/", trim($arr['category']))) {
+		if (!$arr['category']) {
 			$_SESSION['error'] = "Please enter a valid category name";
 		}
 		$query = "update categories set category = :category where id = :id limit 1";

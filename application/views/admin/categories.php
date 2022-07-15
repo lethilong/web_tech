@@ -59,37 +59,22 @@
 	<div class="col-md-12">
 		<div class="content-panel">
 			<table class="table table-striped table-advance table-hover">
-				<h4><i class="fa fa-angle-right"></i> Product Categories <button class="btn btn-primary btn-xs" onclick="show_add_new(event)"><i class="fa fa-plus"></i> Add New</button></h4>
+				<h4>Danh mục <button class="btn btn-primary btn-xs" onclick="show_add_new(event)"><i class="fa fa-plus"></i> Thêm danh mục</button></h4>
 
 				<!--add new category-->
 				<div class="add_new hide">
 
-					<h4 class="mb"><i class="fa fa-angle-right"></i> Add New Category</h4>
+					<h4 class="mb">Thêm mới danh mục sản phẩm</i> </h4>
 					<form class="form-horizontal style-form" method="post">
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label">Category Name:</label>
+							<label class="col-sm-2 col-sm-2 control-label">Danh mục</label>
 							<div class="col-sm-10">
 								<input id="category" name="category" type="text" class="form-control" autofocus>
 							</div>
 						</div>
 						<br><br style="clear: both;"><br>
-						<!-- <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Parent (optional):</label>
-			                              <div class="col-sm-10">
-			                                  <select id="parent" name="parent"  class="form-control" required>
-			                              		<option></option>
-			                              		<?php if (is_array($categories)) : ?>
-				                              		<?php foreach ($categories as $categ) : ?>
-
-				                              			<option value="<?= $categ->id ?>"><?= $categ->category ?></option>
-				                              		<?php endforeach; ?>
-			                              		<?php endif; ?>
-			                              	</select>
-			                              </div>
-			                          </div> -->
-
-						<button type="button" class="btn btn-warning" onclick="show_add_new(event)" style="position:absolute;bottom:10px; left:10px;">Close</button>
-						<button type="button" class="btn btn-primary" onclick="collect_data(event)" style="position:absolute;bottom:10px; right:10px;">Save</button>
+						<button type="button" class="btn btn-warning" onclick="show_add_new(event)" style="position:absolute;bottom:10px; left:10px;">Đóng</button>
+						<button type="button" class="btn btn-primary" onclick="collect_data(event)" style="position:absolute;bottom:10px; right:10px;">Lưu</button>
 
 					</form>
 
@@ -99,12 +84,10 @@
 
 				<div class="popup hide">
 
-					<h4 class="title_pu">Do you want to delete</h4>
+					<h4 class="title_pu">Xóa sản danh mục ?</h4>
 
-
-
-					<button type="button" class="btn btn-warning" onclick="close_popup(false)" style="position:absolute;bottom:10px; left:10px; width: 80px">No</button>
-					<button type="button" class="btn btn-primary" onclick="close_popup(true)" style="position:absolute;bottom:10px; right:10px; width: 80px">Yes</button>
+					<button type="button" class="btn btn-warning" onclick="close_popup(false)" style="position:absolute;bottom:10px; left:10px; width: 80px">Đóng</button>
+					<button type="button" class="btn btn-primary" onclick="close_popup(true)" style="position:absolute;bottom:10px; right:10px; width: 80px">Xóa</button>
 
 
 
@@ -114,32 +97,17 @@
 				<!--edit category-->
 				<div class="edit_category hide">
 
-					<h4 class="mb"><i class="fa fa-angle-right"></i> Edit Category</h4>
+					<h4 class="mb">Chỉnh sửa danh mục sản phẩm</h4>
 					<form class="form-horizontal style-form" method="post">
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label">Category Name:</label>
+							<label class="col-sm-2 col-sm-2 control-label">Danh mục</label>
 							<div class="col-sm-10">
 								<input id="category_edit" name="category" type="text" class="form-control" autofocus>
 							</div>
 						</div>
 						<br><br style="clear: both;"><br>
-						<!-- <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Parent (optional):</label>
-			                              <div class="col-sm-10">
-			                                  <select id="parent_edit" name="parent"  class="form-control" required>
-			                              		<option></option>
-			                              		<?php if (is_array($categories)) : ?>
-				                              		<?php foreach ($categories as $categ) : ?>
-
-				                              			<option value="<?= $categ->id ?>"><?= $categ->category ?></option>
-				                              		<?php endforeach; ?>
-			                              		<?php endif; ?>
-			                              	</select>
-			                              </div>
-			                          </div> -->
-
-						<button type="button" class="btn btn-warning" onclick="show_edit_category(0,'',event)" style="position:absolute;bottom:10px; left:10px;">Cancel</button>
-						<button type="button" class="btn btn-primary" onclick="delete_row(event)" style="position:absolute;bottom:10px; right:10px;">Save</button>
+						<button type="button" class="btn btn-warning" onclick="show_edit_category(0,'',event)" style="position:absolute;bottom:10px; left:10px;">Đóng</button>
+						<button type="button" class="btn btn-primary" onclick="collect_edit_data(event)" style="position:absolute;bottom:10px; right:10px;">Lưu</button>
 
 					</form>
 
@@ -147,17 +115,12 @@
 				</div>
 				<!--edit category end-->
 
-
-
 				<hr>
-
 
 				<thead>
 					<tr>
-						<th><i class="fa fa-bullhorn"></i> Category</th>
-						<!-- <th><i class=" fa fa-table"></i> Parent</th>
-                                   <th><i class=" fa fa-edit"></i> Status</th> -->
-						<th><i class=" fa fa-edit"></i> Action</th>
+						<th>Danh mục</th>
+						<th><i class=" fa fa-edit"></i>  Tùy chọn</th>
 					</tr>
 				</thead>
 				<tbody id="table_body">
@@ -230,12 +193,6 @@
 			alert("Please enter a valid category name");
 		}
 
-		// var parent_input = document.querySelector("#parent");
-		// if(isNaN(parent_input.value.trim()))
-		// {
-		// 	alert("Please enter a valid category name");
-		// }
-
 		var category = category_input.value.trim();
 		// var parent = parent_input.value.trim();
 		send_data({
@@ -253,19 +210,11 @@
 			alert("Please enter a valid category name");
 		}
 
-		// var parent_input = document.querySelector("#parent_edit");
-		// if(isNaN(parent_input.value.trim()))
-		// {
-		// 	alert("Please enter a valid category name");
-		// }
-
 		var category = category_input.value.trim();
-		// var parent = parent_input.value.trim();
 
 		send_data({
 			id: EDIT_ID,
 			category: category,
-			// parent:parent,
 			data_type: 'edit_category'
 		});
 	}
@@ -365,14 +314,6 @@
 		// popup.classList.add("hide");
 
 
-	}
-
-	function disable_row(id, state) {
-		send_data({
-			data_type: "disable_row",
-			id: id,
-			current_state: state,
-		});
 	}
 </script>
 

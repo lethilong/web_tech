@@ -32,7 +32,7 @@
                   <li class="sub-menu">
                       <a <?=(isset($current_page) && $current_page == "products") ? ' class="active" ':''; ?> href="<?=ROOT?>admin/products" >
                           <i class="fa fa-barcode"></i>
-                          <span>Products</span>
+                          <span>Sản phẩm</span>
                       </a>
 
                   </li>
@@ -40,7 +40,7 @@
                   <li class="sub-menu">
                       <a <?=(isset($current_page) && $current_page == "categories") ? ' class="active" ':''; ?> href="<?=ROOT?>admin/categories" >
                           <i class="fa fa-list-alt"></i>
-                          <span>Categories</span>
+                          <span>Danh mục</span>
                       </a>
 
                   </li>
@@ -48,7 +48,7 @@
                   <li class="sub-menu">
                       <a <?=(isset($current_page) && $current_page == "orders") ? ' class="active" ':''; ?> href="<?=ROOT?>admin/orders" >
                           <i class="fa fa-reorder"></i>
-                          <span>Orders</span>
+                          <span>Đơn hàng</span>
                       </a>
 
                   </li>
@@ -56,11 +56,11 @@
                    <li class="sub-menu">
                       <a <?=(isset($current_page) && $current_page == "users") ? ' class="active" ':''; ?> href="<?=ROOT?>admin/users" >
                           <i class="fa fa-user"></i>
-                          <span>Users</span>
+                          <span>Tài khoản</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="<?=ROOT?>admin/users/customers">Customers</a></li>
-                          <li><a  href="<?=ROOT?>admin/users/admins">Admins</a></li>
+                          <li><a  href="<?=ROOT?>admin/users/customers">Khách hàng</a></li>
+                          <li><a  href="<?=ROOT?>admin/users/admins">Quản trị viên</a></li>
                        </ul>
                   </li>
 
@@ -103,6 +103,7 @@
           <section class="wrapper site-min-height">
             <h3>
                 <!-- <i class="fa fa-angle-right"></i> -->
-            <?= ucwords($data['page_title']) ?></h3>
+            <!-- <?= ucwords($data['page_title']) ?> -->
+        </h3>
             <div class="row mt">
               <div class="col-lg-12">

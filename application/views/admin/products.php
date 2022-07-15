@@ -42,36 +42,36 @@
                   <div class="col-md-12">
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
-	                  	  	  <h4>Products <button class="btn btn-primary btn-xs" onclick="show_add_new(event)"><i class="fa fa-plus"></i> Add New</button></h4>
+	                  	  	  <h4>Sản phẩm<button class="btn btn-primary btn-xs" onclick="show_add_new(event)"><i class="fa fa-plus"></i>Thêm sản phẩm</button></h4>
 
 	                  	  	  <!--add new product-->
 	                  	  	  <div class="add_new add_edit_panel hide">
 
-				                  <h4 class="mb">Add New Product</h4>
+				                  <h4 class="mb">Thêm mới sản phẩm</h4>
 			                      <form class="form-horizontal style-form" method="post">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Product Name:</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Tên sản phẩm</label>
 			                              <div class="col-sm-10">
 			                                  <input id="name" name="name" type="text" class="form-control" autofocus required>
 			                              </div>
 			                          </div>
 			                          <br><br style="clear: both;">
                                 <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Description:</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Mô tả</label>
 			                              <div class="col-sm-10">
-			                                  <input id="description" name="description" type="text" class="form-control" autofocus required>
+			                                  <input id="description" name="description" type="text" class="form-control" autofocus required >
 			                              </div>
 			                          </div>
 			                          <br><br style="clear: both;">
                                 <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Brand:</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Hãng</label>
 			                              <div class="col-sm-10">
 			                                  <input id="brand" name="brand" type="text" class="form-control" autofocus required>
 			                              </div>
 			                          </div>
 			                          <br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Quantity:</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Số lượng</label>
 			                              <div class="col-sm-10">
 			                                  <input id="quantity" name="quantity" type="number" value="1" class="form-control" required>
 			                              </div>
@@ -79,7 +79,7 @@
 
 			                          <br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Category:</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Thể loại</label>
 			                              <div class="col-sm-10">
 			                              	<select id="category" name="category"  class="form-control" required>
 			                              		<option></option>
@@ -95,7 +95,7 @@
 
 			                          <br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Price:</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Giá</label>
 			                              <div class="col-sm-10">
 			                                  <input id="price" name="price" type="number" placeholder="0.00" step="0.01" class="form-control" required>
 			                              </div>
@@ -103,28 +103,28 @@
 
 			                          <br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Image:</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Ảnh chính</label>
 			                              <div class="col-sm-10">
 			                                  <input id="image" name="image" type="file"  onchange="display_image(this.files[0],this.name,'js-product-images-add')" class="form-control" required>
 			                              </div>
 			                          </div>
  											<br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Image2 (optional):</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Ảnh (optional)</label>
 			                              <div class="col-sm-10">
 			                                  <input id="image2" name="image2" type="file"  onchange="display_image(this.files[0],this.name,'js-product-images-add')" class="form-control" >
 			                              </div>
 			                          </div>
  											<br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Image3 (optional):</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Ảnh (optional)</label>
 			                              <div class="col-sm-10">
 			                                  <input id="image3" name="image3" type="file"  onchange="display_image(this.files[0],this.name,'js-product-images-add')" class="form-control" >
 			                              </div>
 			                          </div>
  											<br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Image4 (optional):</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Ảnh (optional)</label>
 			                              <div class="col-sm-10">
 			                                  <input id="image4" name="image4" type="file"  onchange="display_image(this.files[0],this.name,'js-product-images-add')" class="form-control" >
 			                              </div>
@@ -148,31 +148,31 @@
 	                  	  	  <!--edit product-->
 	                  	  	  <div class="edit_product add_edit_panel hide" >
 
-				                  <h4 class="mb"><i class="fa fa-angle-right"></i> Edit Product</h4>
+				                  <h4 class="mb"><i class="fa fa-angle-right"></i> Chỉnh sửa sản phẩm</h4>
 			                      <form class="form-horizontal style-form" method="post">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Product Name:</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Tên sản phẩm</label>
 			                              <div class="col-sm-10">
 			                                  <input id="edit_name" name="name" type="text" class="form-control" autofocus required>
 			                              </div>
 			                          </div>
 			                          <br><br style="clear: both;">
                                  <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Description:</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Mô tả</label>
 			                              <div class="col-sm-10">
 			                                  <input id="edit_description" name="description" type="text" class="form-control" autofocus required>
 			                              </div>
 			                          </div>
 			                          <br><br style="clear: both;">
                                  <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Brand:</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Hãng</label>
 			                              <div class="col-sm-10">
 			                                  <input id="edit_brand" name="brand" type="text" class="form-control" autofocus required>
 			                              </div>
 			                          </div>
 			                          <br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Quantity:</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Số lượng</label>
 			                              <div class="col-sm-10">
 			                                  <input id="edit_quantity" name="quantity" type="number" value="1" class="form-control" required>
 			                              </div>
@@ -180,7 +180,7 @@
 
 			                          <br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Category:</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Danh mục</label>
 			                              <div class="col-sm-10">
 			                              	<select id="edit_category" name="category"  class="form-control" required>
 			                              		<option></option>
@@ -196,7 +196,7 @@
 
 			                          <br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Price:</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Giá</label>
 			                              <div class="col-sm-10">
 			                                  <input id="edit_price" name="price" type="number" placeholder="0.00" step="0.01" class="form-control" required>
 			                              </div>
@@ -204,28 +204,28 @@
 
 			                          <br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Image:</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Ảnh chính</label>
 			                              <div class="col-sm-10">
 			                                  <input id="edit_image" name="image" type="file" onchange="display_image(this.files[0],this.name,'js-product-images-edit')" class="form-control" required>
 			                              </div>
 			                          </div>
  											<br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Image2 (optional):</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Ảnh (optional)</label>
 			                              <div class="col-sm-10">
 			                                  <input id="edit_image2" name="image2" type="file" onchange="display_image(this.files[0],this.name,'js-product-images-edit')" class="form-control" >
 			                              </div>
 			                          </div>
  											<br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Image3 (optional):</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Ảnh (optional)</label>
 			                              <div class="col-sm-10">
 			                                  <input id="edit_image3" name="image3" type="file" onchange="display_image(this.files[0],this.name,'js-product-images-edit')" class="form-control" >
 			                              </div>
 			                          </div>
  											<br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Image4 (optional):</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Ảnh (optional)</label>
 			                              <div class="col-sm-10">
 			                                  <input id="edit_image4" name="image4" type="file" onchange="display_image(this.files[0],this.name,'js-product-images-edit')" class="form-control" >
 			                              </div>
@@ -250,16 +250,16 @@
 
                               <thead>
                               <tr>
-                                  <th>Product id</th>
-                                  <th>Product Name</th>
-                                  <th>Brand</th>
-                                  <th>Description</th>
-                                   <th>Quantity</th>
-                                   <th>Category</th>
-                                   <th>Price</th>
-                                   <th>Date</th>
-                                   <th>Image</th>
-                                  <th><i class=" fa fa-edit"></i> Action</th>
+                                	<th>Mã sản phẩm</th>
+                                	<th>Tên sản phẩm</th>
+                                	<th>Hãng</th>
+                                	<th>Mô tả</th>
+                                	<th>Số lượng</th>
+                                	<th>Danh mục</th>
+                                	<th>Giá</th>
+                                	<th>Ngày thêm</th>
+                                	<th>Ảnh sản phẩm</th>
+                                	<th><i class=" fa fa-edit"></i> Tùy chọn</th>
                               </tr>
                               </thead>
                               <tbody id="table_body">

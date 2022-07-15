@@ -58,7 +58,7 @@ class Ajax_category extends Controller
 			}
 			if ($data->data_type == 'delete_row') {
 				$check = $category->delete($data);
-				// $arr['message'] = "Delete success!";
+				$arr['message'] = "Delete success!";
 				$cats = $category->get_all();
 				$arr['message_type'] = "info";
 				$arr['data_type'] = "delete_row";
