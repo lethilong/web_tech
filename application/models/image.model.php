@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-class Image
+class ImageModel
 {
 
 	public function generate_filename($length)
@@ -24,7 +24,7 @@ class Image
 
 		if(file_exists($original_file_name))
 		{
- 
+
 			$original_image = imagecreatefromjpeg($original_file_name);
 
 			$original_width = imagesx($original_image);
@@ -128,7 +128,7 @@ class Image
 
 		$new_cropped_image = imagecreatetruecolor($max_width, $max_height);
 		imagecopyresampled($new_cropped_image, $new_image, 0, 0, $x, $y, $max_width, $max_height, $max_width, $max_height);
-		
+
 		imagedestroy($new_image);
 
 		imagejpeg($new_cropped_image,$cropped_file_name,90);

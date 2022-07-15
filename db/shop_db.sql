@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2022 at 04:17 PM
+-- Generation Time: Jul 15, 2022 at 11:52 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -32,6 +32,52 @@ CREATE TABLE `categories` (
   `category` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `category`) VALUES
+(1, 'Laptop'),
+(3, 'Điện Thoại'),
+(9, 'Dienmayxanh'),
+(10, 'Do Gia Dung'),
+(11, 'Dodien'),
+(12, 'Do Go'),
+(13, 'Them Moi');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(20) NOT NULL,
+  `user_token` varchar(60) NOT NULL,
+  `status` varchar(10) NOT NULL DEFAULT 'pending',
+  `isPaid` tinyint(1) NOT NULL DEFAULT 0,
+  `delivery_name` varchar(100) NOT NULL,
+  `delivery_phone` varchar(10) NOT NULL,
+  `delivery_address` varchar(200) NOT NULL,
+  `total_price` double NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_details`
+--
+
+CREATE TABLE `order_details` (
+  `id` int(20) NOT NULL,
+  `orderId` int(20) NOT NULL,
+  `qty` int(10) NOT NULL,
+  `amount` double NOT NULL,
+  `total` double NOT NULL,
+  `productId` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- --------------------------------------------------------
 
 --
@@ -41,7 +87,9 @@ CREATE TABLE `categories` (
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `token` varchar(60) NOT NULL,
-  `description` varchar(200) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `description` text NOT NULL,
+  `brand` varchar(66) NOT NULL,
   `category` int(11) NOT NULL,
   `price` double NOT NULL,
   `quantity` int(11) NOT NULL,
@@ -94,6 +142,21 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_token` (`user_token`);
+
+--
+-- Indexes for table `order_details`
+--
+ALTER TABLE `order_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `orderId` (`orderId`),
+  ADD KEY `productId` (`productId`);
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
@@ -103,7 +166,8 @@ ALTER TABLE `products`
   ADD KEY `quantity` (`quantity`),
   ADD KEY `price` (`price`),
   ADD KEY `category` (`category`),
-  ADD KEY `description` (`description`),
+  ADD KEY `description` (`description`(768)),
+  ADD KEY `name` (`name`),
   ADD KEY `token` (`token`);
 
 --
@@ -121,13 +185,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT for table `order_details`
 --
-ALTER TABLE `products`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+ALTER TABLE `order_details`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -140,10 +210,17 @@ ALTER TABLE `users`
 --
 
 --
--- Constraints for table `products`
+-- Constraints for table `orders`
 --
-ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category`) REFERENCES `categories` (`id`);
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_token`) REFERENCES `users` (`token`);
+
+--
+-- Constraints for table `order_details`
+--
+ALTER TABLE `order_details`
+  ADD CONSTRAINT `order_details_ibfk_1` FOREIGN KEY (`orderId`) REFERENCES `orders` (`id`),
+  ADD CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`productId`) REFERENCES `products` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
