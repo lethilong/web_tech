@@ -1,8 +1,8 @@
-<?php $this->view("header",$data); ?>
+<?php $this->view("components/header",$data); ?>
 
 	<section id="advertisement">
 		<div class="container">
-			<img src="<?=ASSETS?>images/shop/advertisement.jpg" alt="" />
+			<!-- <img src="<?=ASSETS?>images/shop/advertisement.jpg" alt="" /> -->
 		</div>
 	</section>
 
@@ -37,4 +37,4 @@
 		</div>
 	</section>
 
-<?php $this->view("footer",$data); ?>
+<?php $this->view("components/footer",$data); ?>

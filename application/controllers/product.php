@@ -97,7 +97,7 @@ class Product extends Controller {
 		$User = $this->load_model('User');
 		$userData = $User->checkLogin();
 
-		if(is_object($user_data)){
+		if(is_object($userData)){
 			$data['user_data'] = $userData;
 		}
 

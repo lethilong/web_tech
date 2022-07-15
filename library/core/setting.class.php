@@ -51,7 +51,7 @@ Class Settings
 	public function save_settings($POST)
 	{
 
-		$this->$error = array();
+		$this->error = array();
 
 		$db = Database::newInstance();
 		
@@ -77,6 +77,6 @@ Class Settings
 			
 		}
 
-		return $this->$error;
+		return $this->error;
 	}
 }

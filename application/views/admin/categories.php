@@ -44,22 +44,22 @@
                   <div class="col-md-12">
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
-	                  	  	  <h4>Categories <button class="btn btn-primary btn-xs" onclick="show_add_new(event)"><i class="fa fa-plus"></i> Add New</button></h4>
+	                  	  	  <h4>Danh mục <button class="btn btn-primary btn-xs" onclick="show_add_new(event)"><i class="fa fa-plus"></i>  Thêm danh mục</button></h4>
 	                  	  	  
 	                  	  	  <!--add new category-->
 	                  	  	  <div class="add_new hide">
  	                  	  	   
-				                  <h4 class="mb">Add New Category</h4>
+				                  <h4 class="mb">Thêm danh mục sản phẩm mới</h4>
 			                      <form class="form-horizontal style-form" method="post">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Category Name:</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Danh mục</label>
 			                              <div class="col-sm-10">
 			                                  <input id="category" name="category" type="text" class="form-control" autofocus>
 			                              </div>
 			                          </div>
 			                          <br><br style="clear: both;"><br>
-               	  	  					<button type="button" class="btn btn-warning" onclick="show_add_new(event)" style="position:absolute;bottom:10px; left:10px;">Close</button>
-              	  	  					<button type="button" class="btn btn-primary" onclick="collect_data(event)" style="position:absolute;bottom:10px; right:10px;">Save</button>
+               	  	  					<button type="button" class="btn btn-warning" onclick="show_add_new(event)" style="position:absolute;bottom:10px; left:10px;">Đóng</button>
+              	  	  					<button type="button" class="btn btn-primary" onclick="collect_data(event)" style="position:absolute;bottom:10px; right:10px;">Lưu</button>
 			                   
 			                      </form>
  					           
@@ -70,10 +70,10 @@
 	                  	  	  <!--edit category-->
 	                  	  	  <div class="edit_category hide" >
  	                  	  	   
-				                  <h4 class="mb">Edit Category</h4>
+				                  <h4 class="mb">Sửa danh mục
 			                      <form class="form-horizontal style-form" method="post">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Category Name:</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Tên danh mục</label>
 			                              <div class="col-sm-10">
 			                                  <input id="category_edit" name="category" type="text" class="form-control" autofocus>
 			                              </div>
@@ -95,10 +95,10 @@
 
                               <thead>
                               <tr>
-                                  <th>Category</th>
+                                  <th>Danh mục</th>
                                    <!-- <th><i class=" fa fa-table"></i> Parent</th>
                                    <th><i class=" fa fa-edit"></i> Status</th> -->
-                                  <th><i class=" fa fa-edit"></i> Action</th>
+                                  <th><i class=" fa fa-edit"></i> Tùy chọn</th>
                               </tr>
                               </thead>
                               <tbody id="table_body">
