@@ -63,7 +63,7 @@ class CategoryModel {
 					$result .= '
 						<td><a href="basic_table.html#">'.$cat_row->category.'</a></td>
 	                    <td>
-                        	<button onclick="show_edit_category('.$cat_row->id.",'".$cat_row->category.', event)" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                        	<button onclick="show_edit_category('.$cat_row->id.', event)" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
                        		<button onclick="delete_row('.$cat_row->id.')" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
 	                  	</td>
 					';
@@ -103,6 +103,31 @@ class CategoryModel {
 		return $DB->read("select * from categories order by id desc");
 
 	}
+  public function edit($data)
+  {
+	$arr['id'] = $data->id;
+	$arr['category'] = $data->category;
+	$DB = Database::newInstance();
+	if(!preg_match("/^[a-zA-Z ]+$/", trim($arr['category'])))
+		{
+			$_SESSION['error'] = "Please enter a valid category name";
+		}
+	$query = "update categories set category = :category where id = :id limit 1";
+	if(!isset($_SESSION['error']) || $_SESSION['error'] == ""){
+		$check = $DB->write($query,$arr);
+		if ($check){
+			return true;
+		}
+	}
+	
+	return false;
+  }
+  public function delete($data){
+	$id = $data->id;
+	$DB = Database::newInstance();
+	$query = "delete from categories where id = '$id' limit 1";
+	$DB->write($query);
+  }
 
 
 }
