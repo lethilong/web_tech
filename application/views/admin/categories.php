@@ -7,7 +7,7 @@
 		.add_new{
 
 			width: 500px;
-			height:300px;
+			height:auto;
 			background-color: #eae8e8;
 			box-shadow: 0px 0px 10px #aaa;
 			position: absolute;
@@ -16,12 +16,17 @@
 
 		.edit_category{
 
-			width: 500px;
-			height:300px;
+			/* width: 500px;
+			height:300px; */
 			background-color: #eae8e8;
 			box-shadow: 0px 0px 10px #aaa;
-			position: absolute;
+			/* position: absolute; */
 			padding: 6px;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 25%;
 		}
 
 
@@ -70,17 +75,18 @@
 	                  	  	  <!--edit category-->
 	                  	  	  <div class="edit_category hide" >
  	                  	  	   
-				                  <h4 class="mb">Sửa danh mục
+				                  <h4 class="mb">Sửa danh mục</h4>
 			                      <form class="form-horizontal style-form" method="post">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Tên danh mục</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Danh mục</label>
 			                              <div class="col-sm-10">
 			                                  <input id="category_edit" name="category" type="text" class="form-control" autofocus>
 			                              </div>
 			                          </div>
               	  	  					<br><br style="clear: both;"><br>
-              	  	  					<button type="button" class="btn btn-warning" onclick="show_edit_category(0,'',event)" style="position:absolute;bottom:10px; left:10px;">Cancel</button>
-              	  	  					<button type="button" class="btn btn-primary" onclick="collect_edit_data(event)" style="position:absolute;bottom:10px; right:10px;">Save</button>
+
+              	  	  					<button type="button" class="btn btn-warning" onclick="show_edit_category(0,'',event)" style="position:absolute;bottom:10px; left:10px;">Đóng</button>
+              	  	  					<button type="button" class="btn btn-primary" onclick="collect_edit_data(event)" style="position:absolute;bottom:10px; right:10px;">Lưu</button>
 			                   
 			                      </form>
  					           
@@ -102,7 +108,11 @@
                               </tr>
                               </thead>
                               <tbody id="table_body">
-
+								<!-- <tr>
+									<td>
+										<button onclick="console.log('Hello')"></button>
+									</td>
+								</tr> -->
                               	<?=$tbl_rows?>
                              
                               </tbody>
@@ -115,7 +125,8 @@
 	
 	var EDIT_ID = 0;
 
-	function show_add_new() {
+	function show_add_new()
+	{
 		var show_edit_box = document.querySelector(".add_new");
  		var category_input = document.querySelector("#category");
 		
@@ -132,29 +143,38 @@
 
 	}
 
-	function show_edit_category(id, category, e) {
-
-		EDIT_ID = id;
+	function show_edit_category(id,e)
+	{
+		console.log(id)
+		if (id == 0){
+			EDIT_ID = id;
+		}
 		var show_add_box = document.querySelector(".edit_category");
-		show_add_box.style.top = (e.clientY - 100) + "px";
+		// show_add_box.style.right = (e.clientX - 700) + "px";
+		// show_add_box.style.top = (e.clientY - 120) + "px";
 
  		var category_input = document.querySelector("#category_edit");
-		category_input.value = category;
-		
-		if(show_add_box.classList.contains("hide")){
+		category_input.value = "";
 
- 			show_add_box.classList.remove("hide");
- 			category_input.focus();
+		// var parent_input = document.querySelector("#parent_edit");
+		// parent_input.value = parent;
+		if(!show_add_box.classList.contains("hide") && id==EDIT_ID){
+
+			show_add_box.classList.add("hide");
+			category_input.value = "";
+			
 		}else{
 
- 			show_add_box.classList.add("hide");
- 			category_input.value = "";
+		show_add_box.classList.remove("hide");
+		category_input.focus();
 		}
+		EDIT_ID = id;
 
 
 	}
 
-	function collect_data(e) {
+	function collect_data(e)
+	{
 
 		var category_input = document.querySelector("#category");
 		if(category_input.value.trim() == "" || !isNaN(category_input.value.trim()))
@@ -162,15 +182,24 @@
 			alert("Please enter a valid category name");
 		}
 
+		// var parent_input = document.querySelector("#parent");
+		// if(isNaN(parent_input.value.trim()))
+		// {
+		// 	alert("Please enter a valid category name");
+		// }
+
  		var category = category_input.value.trim();
+ 		// var parent = parent_input.value.trim();
 		send_data({
 			category:category,
+			// parent:parent,
 			data_type:'add_category'
 		});
 	}
 
 	
-	function collect_edit_data(e) {
+	function collect_edit_data(e)
+	{
 
 		var category_input = document.querySelector("#category_edit");
 		if(category_input.value.trim() == "" || !isNaN(category_input.value.trim()))
@@ -178,18 +207,27 @@
 			alert("Please enter a valid category name");
 		}
 
-		var category = category_input.value.trim();
+ 		// var parent_input = document.querySelector("#parent_edit");
+		// if(isNaN(parent_input.value.trim()))
+		// {
+		// 	alert("Please enter a valid category name");
+		// }
 
+		var category = category_input.value.trim();
+ 		// var parent = parent_input.value.trim();
+		
 		send_data({
 			id:EDIT_ID,
 			category:category,
+			// parent:parent,
 			data_type:'edit_category'
 		});
 	}
 
 
 
-	function send_data(data = {}) {
+	function send_data(data = {})
+	{
 
  		var ajax = new XMLHttpRequest();
  
@@ -205,7 +243,8 @@
 		ajax.send(JSON.stringify(data));
 	}
 
-	function handle_result(result) {
+	function handle_result(result)
+	{
 
 		if(result != ""){
 			var obj = JSON.parse(result);
@@ -257,14 +296,16 @@
 		}
 	}
 
-	function edit_row(id) {
+	function edit_row(id)
+	{
 
  		send_data({
  			data_type: ""
  		});
 	}
 
-	function delete_row(id) {
+	function delete_row(id)
+	{
 
 		if(!confirm("Are you sure you want to delete this row?"))
 		{
@@ -277,7 +318,8 @@
  		});
 	}
 
-	function disable_row(id,state) {
+	function disable_row(id,state)
+	{
 		send_data({
  			data_type: "disable_row",
  			id:id,

@@ -14,12 +14,14 @@ Class ProductModel
 		$_SESSION['error'] = "";
 
 		$DB = Database::newInstance();
+		$arr['name'] = ucwords($DATA->name);
+		$arr['brand'] = ucwords($DATA->brand);
 		$arr['description'] = ucwords($DATA->description);
 		$arr['quantity'] 	= ucwords($DATA->quantity);
 		$arr['category'] 	= ucwords($DATA->category);
 		$arr['price'] 		= ucwords($DATA->price);
 		$arr['date'] 		= date("Y-m-d H:i:s");
-		$arr['user_url'] 	= $_SESSION['user_url'];
+		$arr['token'] 	= $_SESSION['token'];
 		$arr['slag'] 		= $this->str_to_url($DATA->description);
 
 		if(!preg_match("/^[a-zA-Z 0-9._\-,]+$/", trim($arr['description'])))
@@ -88,7 +90,7 @@ Class ProductModel
 		}
 
 		if(!isset($_SESSION['error']) || $_SESSION['error'] == ""){
-			$query = "insert into products (description,quantity,category,price,date,user_url,image,image2,image3,image4,slag) values (:description,:quantity,:category,:price,:date,:user_url,:image,:image2,:image3,:image4,:slag)";
+			$query = "insert into products (name,brand,description,quantity,category,price,date,token,image,image2,image3,image4,slag) values (:name,:brand,:description,:quantity,:category,:price,:date,:token,:image,:image2,:image3,:image4,:slag)";
 			$check = $DB->write($query,$arr);
 
 			if($check){
@@ -104,6 +106,8 @@ Class ProductModel
 	{
 
  		$arr['id'] = $data->id;
+		$arr['name'] = $data->name;
+		$arr['brand'] = $data->brand;
 		$arr['description'] = $data->description;
 		$arr['quantity'] = $data->quantity;
 		$arr['category'] = $data->category;
@@ -165,7 +169,7 @@ Class ProductModel
 		if(!isset($_SESSION['error']) || $_SESSION['error'] == ""){
 
 			$DB = Database::newInstance();
-	 		$query = "update products set description = :description,quantity = :quantity,category = :category,price = :price $images_string where id = :id limit 1";
+	 		$query = "update products set description = :description, name =:name, brand =:brand, quantity = :quantity,category = :category,price = :price $images_string where id = :id limit 1";
 
 			$DB->write($query,$arr);
 		}
@@ -203,7 +207,7 @@ Class ProductModel
   }
 
   public function search($search) {
-    $sql = "select * from products where name like '%$search' or description like '%$search'";
+    $sql = "select * from products where name like '%$search' or description like '%$search' or brand like '%$search'";
     $this->db->read($sql);
   }
 
@@ -215,10 +219,12 @@ Class ProductModel
 			foreach ($cats as $cat_row) {
 				# code...
 
- 				$edit_args = $cat_row->id.",'".$cat_row->description."'";
+ 				$edit_args = $cat_row->id.",'".$cat_row->name."'";
 
  				$info = array();
  				$info['id'] = $cat_row->id;
+ 				$info['name'] = $cat_row->name;
+ 				$info['brand'] = $cat_row->brand;
  				$info['description'] = $cat_row->description;
  				$info['quantity'] = $cat_row->quantity;
  				$info['price'] = $cat_row->price;
@@ -235,6 +241,8 @@ Class ProductModel
 
 					$result .= '
 						<td><a href="basic_table.html#">'.$cat_row->id.'</a></td>
+						<td><a href="basic_table.html#">'.$cat_row->name.'</a></td>
+						<td><a href="basic_table.html#">'.$cat_row->brand.'</a></td>
 						<td><a href="basic_table.html#">'.$cat_row->description.'</a></td>
 						<td><a href="basic_table.html#">'.$cat_row->quantity.'</a></td>
 						<td><a href="basic_table.html#">'.$one_cat->category.'</a></td>

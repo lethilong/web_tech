@@ -38,6 +38,40 @@ Class Ajax_category extends Controller {
 					echo json_encode($arr);
 				}
             }
+			if($data->data_type == 'edit_category')
+			{
+				$check = $category->edit($data);
+				if($_SESSION['error'] != "")
+				{
+					$arr['message'] = $_SESSION['error'];
+					$_SESSION['error'] = "";
+					$arr['message_type'] = "error";
+					$cats = $category->get_all();
+					$arr['data'] = $category->make_table($cats);
+					$arr['data_type'] = "edit_category";
+					
+					echo json_encode($arr);
+				}else
+				{
+					$arr['message'] = "Category update!";
+					$arr['message_type'] = "info";
+					$cats = $category->get_all();
+					$arr['data'] = $category->make_table($cats);
+					$arr['data_type'] = "edit_category";
+
+					echo json_encode($arr);
+				}
+			}
+			if($data->data_type == 'delete_row'){
+				$check = $category->delete($data);
+				$arr['message'] = "Delete success!";
+				$cats = $category->get_all();
+				$arr['message_type'] = "info";
+				$arr['data_type'] = "delete_row";
+				$arr['data'] = $category->make_table($cats);
+
+				echo json_encode($arr);
+			}
         }
     }
 }

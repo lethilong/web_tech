@@ -20,7 +20,7 @@
 <table class="table table-striped table-advance table-hover">
 
 	<thead>
-		<tr><th>User id</th><th>Name</th><th>Email</th><th>Date created</th>
+		<tr><th>Mã tài khoản</th><th>Tên</th><th>Email</th><th>Ngày tạo</th>
 		<!-- <th>Orders count</th><th>...</th> -->
 	</tr>
 	</thead>

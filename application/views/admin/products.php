@@ -52,7 +52,21 @@
 			                          <div class="form-group">
 			                              <label class="col-sm-2 col-sm-2 control-label">Tên sản phẩm</label>
 			                              <div class="col-sm-10">
-			                                  <input id="description" name="description" type="text" class="form-control" autofocus required>
+			                                  <input id="name" name="name" type="text" class="form-control" autofocus required>
+			                              </div>
+			                          </div>
+			                          <br><br style="clear: both;">
+                                <div class="form-group">
+			                              <label class="col-sm-2 col-sm-2 control-label">Mô tả</label>
+			                              <div class="col-sm-10">
+			                                  <input id="description" name="description" type="text" class="form-control" autofocus required >
+			                              </div>
+			                          </div>
+			                          <br><br style="clear: both;">
+                                <div class="form-group">
+			                              <label class="col-sm-2 col-sm-2 control-label">Hãng</label>
+			                              <div class="col-sm-10">
+			                                  <input id="brand" name="brand" type="text" class="form-control" autofocus required>
 			                              </div>
 			                          </div>
 			                          <br><br style="clear: both;">
@@ -89,28 +103,28 @@
 
 			                          <br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Hình ảnh</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Ảnh chính</label>
 			                              <div class="col-sm-10">
 			                                  <input id="image" name="image" type="file"  onchange="display_image(this.files[0],this.name,'js-product-images-add')" class="form-control" required>
 			                              </div>
 			                          </div>
  											<br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Hình ảnh (optional):</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Ảnh (optional)</label>
 			                              <div class="col-sm-10">
 			                                  <input id="image2" name="image2" type="file"  onchange="display_image(this.files[0],this.name,'js-product-images-add')" class="form-control" >
 			                              </div>
 			                          </div>
  											<br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Hình ảnh (optional):</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Ảnh (optional)</label>
 			                              <div class="col-sm-10">
 			                                  <input id="image3" name="image3" type="file"  onchange="display_image(this.files[0],this.name,'js-product-images-add')" class="form-control" >
 			                              </div>
 			                          </div>
  											<br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Image4 (optional):</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Ảnh (optional)</label>
 			                              <div class="col-sm-10">
 			                                  <input id="image4" name="image4" type="file"  onchange="display_image(this.files[0],this.name,'js-product-images-add')" class="form-control" >
 			                              </div>
@@ -134,17 +148,31 @@
 	                  	  	  <!--edit product-->
 	                  	  	  <div class="edit_product add_edit_panel hide" >
 
-				                  <h4 class="mb"><i class="fa fa-angle-right"></i> Edit Product</h4>
+				                  <h4 class="mb"><i class="fa fa-angle-right"></i> Chỉnh sửa sản phẩm</h4>
 			                      <form class="form-horizontal style-form" method="post">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Product Name:</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Tên sản phẩm</label>
+			                              <div class="col-sm-10">
+			                                  <input id="edit_name" name="name" type="text" class="form-control" autofocus required>
+			                              </div>
+			                          </div>
+			                          <br><br style="clear: both;">
+                                 <div class="form-group">
+			                              <label class="col-sm-2 col-sm-2 control-label">Mô tả</label>
 			                              <div class="col-sm-10">
 			                                  <input id="edit_description" name="description" type="text" class="form-control" autofocus required>
 			                              </div>
 			                          </div>
 			                          <br><br style="clear: both;">
+                                 <div class="form-group">
+			                              <label class="col-sm-2 col-sm-2 control-label">Hãng</label>
+			                              <div class="col-sm-10">
+			                                  <input id="edit_brand" name="brand" type="text" class="form-control" autofocus required>
+			                              </div>
+			                          </div>
+			                          <br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Quantity:</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Số lượng</label>
 			                              <div class="col-sm-10">
 			                                  <input id="edit_quantity" name="quantity" type="number" value="1" class="form-control" required>
 			                              </div>
@@ -152,7 +180,7 @@
 
 			                          <br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Category:</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Danh mục</label>
 			                              <div class="col-sm-10">
 			                              	<select id="edit_category" name="category"  class="form-control" required>
 			                              		<option></option>
@@ -168,7 +196,7 @@
 
 			                          <br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Price:</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Giá</label>
 			                              <div class="col-sm-10">
 			                                  <input id="edit_price" name="price" type="number" placeholder="0.00" step="0.01" class="form-control" required>
 			                              </div>
@@ -176,28 +204,28 @@
 
 			                          <br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Image:</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Ảnh chính</label>
 			                              <div class="col-sm-10">
 			                                  <input id="edit_image" name="image" type="file" onchange="display_image(this.files[0],this.name,'js-product-images-edit')" class="form-control" required>
 			                              </div>
 			                          </div>
  											<br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Image2 (optional):</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Ảnh (optional)</label>
 			                              <div class="col-sm-10">
 			                                  <input id="edit_image2" name="image2" type="file" onchange="display_image(this.files[0],this.name,'js-product-images-edit')" class="form-control" >
 			                              </div>
 			                          </div>
  											<br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Image3 (optional):</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Ảnh (optional)</label>
 			                              <div class="col-sm-10">
 			                                  <input id="edit_image3" name="image3" type="file" onchange="display_image(this.files[0],this.name,'js-product-images-edit')" class="form-control" >
 			                              </div>
 			                          </div>
  											<br><br style="clear: both;">
 			                          <div class="form-group">
-			                              <label class="col-sm-2 col-sm-2 control-label">Image4 (optional):</label>
+			                              <label class="col-sm-2 col-sm-2 control-label">Ảnh (optional)</label>
 			                              <div class="col-sm-10">
 			                                  <input id="edit_image4" name="image4" type="file" onchange="display_image(this.files[0],this.name,'js-product-images-edit')" class="form-control" >
 			                              </div>
@@ -222,14 +250,16 @@
 
                               <thead>
                               <tr>
-                                  <th>Product id</th>
-                                  <th>Product Name</th>
-                                   <th>Quantity</th>
-                                   <th>Category</th>
-                                   <th>Price</th>
-                                   <th>Date</th>
-                                   <th>Image</th>
-                                  <th><i class=" fa fa-edit"></i> Action</th>
+                                	<th>Mã sản phẩm</th>
+                                	<th>Tên sản phẩm</th>
+                                	<th>Hãng</th>
+                                	<th>Mô tả</th>
+                                	<th>Số lượng</th>
+                                	<th>Danh mục</th>
+                                	<th>Giá</th>
+                                	<th>Ngày thêm</th>
+                                	<th>Ảnh sản phẩm</th>
+                                	<th><i class=" fa fa-edit"></i> Tùy chọn</th>
                               </tr>
                               </thead>
                               <tbody id="table_body">
@@ -249,7 +279,7 @@
 	function show_add_new()
 	{
 		var show_edit_box = document.querySelector(".add_new");
- 		var product_input = document.querySelector("#description");
+ 		var product_input = document.querySelector("#name");
 
 		if(show_edit_box.classList.contains("hide")){
 
@@ -315,13 +345,25 @@
 	function collect_data(e)
 	{
 
-		var product_input = document.querySelector("#description");
+		var product_input = document.querySelector("#name");
 		if(product_input.value.trim() == "" || !isNaN(product_input.value.trim()))
 		{
 			alert("Please enter a valid product name");
 			return;
 		}
 
+    var description_input = document.querySelector("#description");
+		if(description_input.value.trim() == "" || !isNaN(description_input.value.trim()))
+		{
+			alert("Please enter a valid description");
+			return;
+		}
+    var brand_input = document.querySelector("#brand");
+		if(brand_input.value.trim() == "" || !isNaN(brand_input.value.trim()))
+		{
+			alert("Please enter a valid brand");
+			return;
+		}
 		var quantity_input = document.querySelector("#quantity");
 		if(quantity_input.value.trim() == "" || isNaN(quantity_input.value.trim()))
 		{
@@ -372,7 +414,9 @@
 		}
 
 
-		data.append('description',product_input.value.trim());
+    data.append('name',product_input.value.trim());
+		data.append('brand',brand_input.value.trim());
+		data.append('description',description_input.value.trim());
 		data.append('quantity',quantity_input.value.trim());
 		data.append('category',category_input.value.trim());
 		data.append('price',price_input.value.trim());
@@ -387,10 +431,24 @@
 	function collect_edit_data(e)
 	{
 
-		var product_input = document.querySelector("#edit_description");
+		var description_input = document.querySelector("#edit_description");
+		if(description_input.value.trim() == "" || !isNaN(description_input.value.trim()))
+		{
+			alert("Please enter a valid description");
+			return;
+		}
+
+    var product_input = document.querySelector("#edit_name");
 		if(product_input.value.trim() == "" || !isNaN(product_input.value.trim()))
 		{
 			alert("Please enter a valid product name");
+			return;
+		}
+
+    var brand_input = document.querySelector("#edit_brand");
+		if(brand_input.value.trim() == "" || !isNaN(brand_input.value.trim()))
+		{
+			alert("Please enter a valid brand");
 			return;
 		}
 
@@ -444,7 +502,9 @@
 		}
 
 
-		data.append('description',product_input.value.trim());
+  data.append('name',product_input.value.trim());
+  data.append('brand',brand_input.value.trim());
+		data.append('description',description_input.value.trim());
 		data.append('quantity',quantity_input.value.trim());
 		data.append('category',category_input.value.trim());
 		data.append('price',price_input.value.trim());
