@@ -6,7 +6,7 @@
 	.add_new {
 
 		width: 500px;
-		height: a;
+		height: auto;
 		background-color: #eae8e8;
 		box-shadow: 0px 0px 10px #aaa;
 		position: absolute;
@@ -28,7 +28,21 @@
 		width: 25%;
 	}
 
+	.popup {
+		background-color: #eae8e8;
+		box-shadow: 0px 0px 10px #aaa;
+		/* position: absolute; */
+		padding: 6px;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 250px;
+	}
 
+	.title_pu {
+		text-align: center;
+	}
 
 	.show {
 		display: block;
@@ -83,6 +97,20 @@
 				</div>
 				<!--add new category end-->
 
+				<div class="popup hide">
+
+					<h4 class="title_pu">Do you want to delete</h4>
+
+
+
+					<button type="button" class="btn btn-warning" onclick="close_popup(false)" style="position:absolute;bottom:10px; left:10px; width: 80px">No</button>
+					<button type="button" class="btn btn-primary" onclick="close_popup(true)" style="position:absolute;bottom:10px; right:10px; width: 80px">Yes</button>
+
+
+
+					<br><br>
+				</div>
+
 				<!--edit category-->
 				<div class="edit_category hide">
 
@@ -111,7 +139,7 @@
 			                          </div> -->
 
 						<button type="button" class="btn btn-warning" onclick="show_edit_category(0,'',event)" style="position:absolute;bottom:10px; left:10px;">Cancel</button>
-						<button type="button" class="btn btn-primary" onclick="collect_edit_data(event)" style="position:absolute;bottom:10px; right:10px;">Save</button>
+						<button type="button" class="btn btn-primary" onclick="delete_row(event)" style="position:absolute;bottom:10px; right:10px;">Save</button>
 
 					</form>
 
@@ -311,16 +339,32 @@
 		});
 	}
 
-	function delete_row(id) {
-
-		if (!confirm("Are you sure you want to delete this row?")) {
-			return;
+	function close_popup(action) {
+		var popup = document.querySelector(".popup");
+		if (!popup.classList.contains('hide')) {
+			popup.classList.add("hide");
+		} else {
+			popup.classList.remove("hide")
 		}
+		if (action == true) {
+			send_data({
+				data_type: "delete_row",
+				id: EDIT_ID
+			});
+		}
+	}
 
-		send_data({
-			data_type: "delete_row",
-			id: id
-		});
+	function get_id_delete(id) {
+		EDIT_ID = id
+		var popup = document.querySelector(".popup");
+		if (!popup.classList.contains('hide')) {
+			popup.classList.add("hide");
+		} else {
+			popup.classList.remove("hide")
+		}
+		// popup.classList.add("hide");
+
+
 	}
 
 	function disable_row(id, state) {
