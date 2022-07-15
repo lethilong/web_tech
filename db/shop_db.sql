@@ -41,6 +41,7 @@ CREATE TABLE `categories` (
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `token` varchar(60) NOT NULL,
+  `name` varchar(200) NOT NULL,
   `description` varchar(200) NOT NULL,
   `brand` varchar(66) NOT NULL,
   `category` int(11) NOT NULL,
@@ -105,6 +106,7 @@ ALTER TABLE `products`
   ADD KEY `price` (`price`),
   ADD KEY `category` (`category`),
   ADD KEY `description` (`description`),
+  ADD KEY `name` (`name`),
   ADD KEY `token` (`token`);
 
 --
