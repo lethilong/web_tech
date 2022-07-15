@@ -52,7 +52,21 @@
 			                          <div class="form-group">
 			                              <label class="col-sm-2 col-sm-2 control-label">Product Name:</label>
 			                              <div class="col-sm-10">
+			                                  <input id="name" name="name" type="text" class="form-control" autofocus required>
+			                              </div>
+			                          </div>
+			                          <br><br style="clear: both;">
+                                <div class="form-group">
+			                              <label class="col-sm-2 col-sm-2 control-label">Description:</label>
+			                              <div class="col-sm-10">
 			                                  <input id="description" name="description" type="text" class="form-control" autofocus required>
+			                              </div>
+			                          </div>
+			                          <br><br style="clear: both;">
+                                <div class="form-group">
+			                              <label class="col-sm-2 col-sm-2 control-label">Brand:</label>
+			                              <div class="col-sm-10">
+			                                  <input id="brand" name="brand" type="text" class="form-control" autofocus required>
 			                              </div>
 			                          </div>
 			                          <br><br style="clear: both;">
@@ -139,7 +153,21 @@
 			                          <div class="form-group">
 			                              <label class="col-sm-2 col-sm-2 control-label">Product Name:</label>
 			                              <div class="col-sm-10">
+			                                  <input id="edit_name" name="name" type="text" class="form-control" autofocus required>
+			                              </div>
+			                          </div>
+			                          <br><br style="clear: both;">
+                                 <div class="form-group">
+			                              <label class="col-sm-2 col-sm-2 control-label">Description:</label>
+			                              <div class="col-sm-10">
 			                                  <input id="edit_description" name="description" type="text" class="form-control" autofocus required>
+			                              </div>
+			                          </div>
+			                          <br><br style="clear: both;">
+                                 <div class="form-group">
+			                              <label class="col-sm-2 col-sm-2 control-label">Brand:</label>
+			                              <div class="col-sm-10">
+			                                  <input id="edit_brand" name="brand" type="text" class="form-control" autofocus required>
 			                              </div>
 			                          </div>
 			                          <br><br style="clear: both;">
@@ -224,6 +252,8 @@
                               <tr>
                                   <th>Product id</th>
                                   <th>Product Name</th>
+                                  <th>Brand</th>
+                                  <th>Description</th>
                                    <th>Quantity</th>
                                    <th>Category</th>
                                    <th>Price</th>
@@ -249,7 +279,7 @@
 	function show_add_new()
 	{
 		var show_edit_box = document.querySelector(".add_new");
- 		var product_input = document.querySelector("#description");
+ 		var product_input = document.querySelector("#name");
 
 		if(show_edit_box.classList.contains("hide")){
 
@@ -315,13 +345,25 @@
 	function collect_data(e)
 	{
 
-		var product_input = document.querySelector("#description");
+		var product_input = document.querySelector("#name");
 		if(product_input.value.trim() == "" || !isNaN(product_input.value.trim()))
 		{
 			alert("Please enter a valid product name");
 			return;
 		}
 
+    var description_input = document.querySelector("#description");
+		if(description_input.value.trim() == "" || !isNaN(description_input.value.trim()))
+		{
+			alert("Please enter a valid description");
+			return;
+		}
+    var brand_input = document.querySelector("#brand");
+		if(brand_input.value.trim() == "" || !isNaN(brand_input.value.trim()))
+		{
+			alert("Please enter a valid brand");
+			return;
+		}
 		var quantity_input = document.querySelector("#quantity");
 		if(quantity_input.value.trim() == "" || isNaN(quantity_input.value.trim()))
 		{
@@ -372,7 +414,9 @@
 		}
 
 
-		data.append('description',product_input.value.trim());
+    data.append('name',product_input.value.trim());
+		data.append('brand',brand_input.value.trim());
+		data.append('description',description_input.value.trim());
 		data.append('quantity',quantity_input.value.trim());
 		data.append('category',category_input.value.trim());
 		data.append('price',price_input.value.trim());
@@ -387,10 +431,24 @@
 	function collect_edit_data(e)
 	{
 
-		var product_input = document.querySelector("#edit_description");
+		var description_input = document.querySelector("#edit_description");
+		if(description_input.value.trim() == "" || !isNaN(description_input.value.trim()))
+		{
+			alert("Please enter a valid description");
+			return;
+		}
+
+    var product_input = document.querySelector("#edit_name");
 		if(product_input.value.trim() == "" || !isNaN(product_input.value.trim()))
 		{
 			alert("Please enter a valid product name");
+			return;
+		}
+
+    var brand_input = document.querySelector("#edit_brand");
+		if(brand_input.value.trim() == "" || !isNaN(brand_input.value.trim()))
+		{
+			alert("Please enter a valid brand");
 			return;
 		}
 
@@ -444,7 +502,9 @@
 		}
 
 
-		data.append('description',product_input.value.trim());
+  data.append('name',product_input.value.trim());
+  data.append('brand',brand_input.value.trim());
+		data.append('description',description_input.value.trim());
 		data.append('quantity',quantity_input.value.trim());
 		data.append('category',category_input.value.trim());
 		data.append('price',price_input.value.trim());

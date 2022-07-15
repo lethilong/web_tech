@@ -27,7 +27,7 @@ class Product extends Controller {
 
 		if($search){
 			$arr['description'] = "%". $find . "%";
-			$ROWS = $DB->read("select * from products where description like :description ",$arr);
+			$ROWS = $DB->read("select * from products where description like :description or name like :description or brand like :description",$arr);
 		}else{
 			$ROWS = $DB->read("select * from products");
 		}
