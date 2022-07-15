@@ -61,7 +61,7 @@ Class Cart extends Controller
 		
 		$data['ROWS'] = $ROWS;
 
-		$this->view("cart",$data);
+		$this->view("cart/index",$data);
 	}
 
 	private $redirect_to = "";

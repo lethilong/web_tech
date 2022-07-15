@@ -1,41 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- Bootstrap core CSS -->
-    <link href="<?=ASSETS?>css/bootstrap.min.css" rel="stylesheet">
-    <!--external css-->
-    <link href="<?=ASSETS?>css/font-awesome.min.css" rel="stylesheet" />
-
-    <!-- Custom styles for this template -->
-    <link href="<?=ASSETS?>css/style.css" rel="stylesheet">
-    <link href="<?=ASSETS?>css/responsive.css" rel="stylesheet">
-    <link href="<?=ASSETS?>css/main.css" rel="stylesheet">
-    <link href="<?=ASSETS?>css/price-range.css" rel="stylesheet">
-    <link href="<?=ASSETS?>css/prettyPhoto.css" rel="stylesheet">
-    <link href="<?=ASSETS?>css/animate.css" rel="stylesheet">
-</head>
-<body>
+<?php $this->view("header",$data); ?>
     <section id="cart_items" style="margin-top: -50px;">
         <div class="container">
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
-                  <li><a href="#">Home</a></li>
-                  <li class="active">Shopping Cart</li>
+                  <li><a href="#">Trang chủ</a></li>
+                  <li class="active">Giỏ hàng</li>
                 </ol>
             </div>
             <div class="table-responsive cart_info"  style="margin-top: -50px;">
                 <table class="table table-condensed">
                     <thead>
                         <tr class="cart_menu">
-                            <td class="image">Item</td>
+                            <td class="image">Sản phẩm</td>
                             <td class="description"></td>
-                            <td class="price">Price</td>
-                            <td class="quantity">Quantity</td>
-                            <td class="total">Total</td>
+                            <td class="price">Giá</td>
+                            <td class="quantity">Số lượng</td>
+                            <td class="total">Tổng</td>
                             <td></td>
                         </tr>
                     </thead>
@@ -48,7 +28,7 @@
                                         <a href=""><img src="<?=ROOT?><?=$row->image?>" style="width:100px;" alt=""></a>
                                     </td>
                                     <td class="cart_description">
-                                        <h4><a href=""><?=$row->description?></a></h4>
+                                        <h4><a href=""><?=$row->name?></a></h4>
                                         <p>prod ID: <?=$row->id?></p>
                                     </td>
                                     <td class="cart_price">
@@ -72,10 +52,10 @@
                             <?php endforeach; ?>
                         <?php else: ?>
     
-                            <div style="font-size: 18px;text-align: center;padding: 6px;">No items were found in the cart</div>
+                            <div style="font-size: 18px;text-align: center;padding: 6px;">Chưa có sản phẩm nào trong giỏ hàng</div>
                         <?php endif; ?>
                     </tbody>
-                </table><div class="pull-right" style="font-size: 25px;">Sub Total: $<?=number_format($sub_total,2)?></div>
+                </table><div class="pull-right" style="font-size: 25px;">Tổng chi phí: $<?=number_format($sub_total,2)?></div>
             </div>
             <a href="<?=ROOT?>checkout">
                 <input type="button" class="btn btn-warning pull-right" value="Checkout >" name="">
@@ -87,8 +67,6 @@
     </section> <!--/#cart_items-->
     <br><br>
     
-</body>
-</html>
   <script type="text/javascript">
  	
  	function edit_quantity(quantity,id){
@@ -151,3 +129,4 @@
 	}
 
  </script>
+<?php $this->view("footer",$data); ?>

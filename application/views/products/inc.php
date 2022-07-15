@@ -8,7 +8,7 @@
 					</a>
 					<h2>$<?=$data->price?></h2>
 					<p><?=$data->description?></p>
-					<a href="<?=ROOT?>add_to_cart/<?=$data->id?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+					<a href="<?=ROOT?>cart/add_to_cart/<?=$data->id?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 				</div>
 
 		</div>
