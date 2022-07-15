@@ -42,12 +42,12 @@
                   <div class="col-md-12">
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
-	                  	  	  <h4><i class="fa fa-angle-right"></i> Products <button class="btn btn-primary btn-xs" onclick="show_add_new(event)"><i class="fa fa-plus"></i> Add New</button></h4>
+	                  	  	  <h4>Products <button class="btn btn-primary btn-xs" onclick="show_add_new(event)"><i class="fa fa-plus"></i> Add New</button></h4>
 
 	                  	  	  <!--add new product-->
 	                  	  	  <div class="add_new add_edit_panel hide">
 
-				                  <h4 class="mb"><i class="fa fa-angle-right"></i> Add New Product</h4>
+				                  <h4 class="mb">Add New Product</h4>
 			                      <form class="form-horizontal style-form" method="post">
 			                          <div class="form-group">
 			                              <label class="col-sm-2 col-sm-2 control-label">Product Name:</label>

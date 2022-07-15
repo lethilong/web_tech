@@ -127,9 +127,9 @@ Class UserModel {
     }
 
 	public function logout() {
-		if(isset($_SESSION['user_url']))
+		if(isset($_SESSION['token']))
 		{
-			unset($_SESSION['user_url']);
+			unset($_SESSION['token']);
 		}
 
 		header("Location: " . ROOT . "home");

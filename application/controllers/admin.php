@@ -4,29 +4,31 @@ Class Admin extends Controller {
     {
         $User = $this->load_model('User');
         $user_data = $User->checkLogin(['admin']);
-        $data['user_data'] = $user_data;
+        if(is_object($user_data)){
+			$data['user_data'] = $user_data;
+		}
         $data['current_page'] = "dashboard";
         $data['page_title'] = 'Admin';
         $this->view('admin/index', $data);
     }
 
-    public function users($type = "customer") {
+    public function users($type = "customers") {
         $User = $this->load_model('User');
         $user_data = $User->checkLogin(['admin']);
         if(is_object($user_data)) {
             $data['user_data'] = $user_data;
         }
 
-        if($type == 'admin') {
+        if($type == 'admins') {
             $users = $User->getAllAdmins();
+			$data['page_title'] = "Admin - Admins";
         } else {
             $users = $User->getAllCustomers();
+			$data['page_title'] = "Admin - Customers";
         }
-        $users = $User->getAllCustomers();
-
         $data['users'] = $users;
         $data['current_page'] = "users";
-        $data['page_title'] = "Customer";
+        
         $this->view('admin/users', $data);
     }
 
