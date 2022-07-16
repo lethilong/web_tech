@@ -59,14 +59,14 @@
                                 <div class="form-group">
 			                              <label class="col-sm-2 col-sm-2 control-label">Description:</label>
 			                              <div class="col-sm-10">
-			                                  <input id="description" name="description" type="text" class="form-control" autofocus required>
+			                                  <input id="description" name="description" type="text" class="form-control" required>
 			                              </div>
 			                          </div>
 			                          <br><br style="clear: both;">
                                 <div class="form-group">
 			                              <label class="col-sm-2 col-sm-2 control-label">Brand:</label>
 			                              <div class="col-sm-10">
-			                                  <input id="brand" name="brand" type="text" class="form-control" autofocus required>
+			                                  <input id="brand" name="brand" type="text" class="form-control" required>
 			                              </div>
 			                          </div>
 			                          <br><br style="clear: both;">
@@ -97,7 +97,7 @@
 			                          <div class="form-group">
 			                              <label class="col-sm-2 col-sm-2 control-label">Price:</label>
 			                              <div class="col-sm-10">
-			                                  <input id="price" name="price" type="number" placeholder="0.00" step="0.01" class="form-control" required>
+			                                  <input id="price" name="price" type="number" placeholder="0" step="0.01" class="form-control" required>
 			                              </div>
 			                          </div>
 
@@ -160,14 +160,14 @@
                                  <div class="form-group">
 			                              <label class="col-sm-2 col-sm-2 control-label">Description:</label>
 			                              <div class="col-sm-10">
-			                                  <input id="edit_description" name="description" type="text" class="form-control" autofocus required>
+			                                  <input id="edit_description" name="description" type="text" class="form-control" required>
 			                              </div>
 			                          </div>
 			                          <br><br style="clear: both;">
                                  <div class="form-group">
 			                              <label class="col-sm-2 col-sm-2 control-label">Brand:</label>
 			                              <div class="col-sm-10">
-			                                  <input id="edit_brand" name="brand" type="text" class="form-control" autofocus required>
+			                                  <input id="edit_brand" name="brand" type="text" class="form-control" required>
 			                              </div>
 			                          </div>
 			                          <br><br style="clear: both;">
@@ -279,16 +279,16 @@
 	function show_add_new()
 	{
 		var show_edit_box = document.querySelector(".add_new");
- 		var product_input = document.querySelector("#name");
+ 		var name_input = document.querySelector("#name");
 
 		if(show_edit_box.classList.contains("hide")){
 
  			show_edit_box.classList.remove("hide");
- 			product_input.focus();
+ 			name_input.focus();
 		}else{
 
  			show_edit_box.classList.add("hide");
- 			product_input.value = "";
+ 			name_input.value = "";
 		}
 
 
@@ -298,7 +298,7 @@
 	{
 
 		var show_add_box = document.querySelector(".edit_product");
-	 	var edit_description_input = document.querySelector("#edit_description");
+	 	var edit_name_input = document.querySelector("#edit_name");
 
 		if(e){
 
@@ -309,7 +309,13 @@
 			//show_add_box.style.left = (e.clientX - 700) + "px";
 			show_add_box.style.top = (e.clientY - 100) + "px";
 
+			edit_name_input.value = info.name;
+
+      var edit_description_input = document.querySelector("#edit_description");
 			edit_description_input.value = info.description;
+
+      var edit_brand_input = document.querySelector("#edit_brand");
+			edit_brand_input.value = info.brand;
 
 			var edit_quantity_input = document.querySelector("#edit_quantity");
 			edit_quantity_input.value = info.quantity;
@@ -332,11 +338,11 @@
 		if(show_add_box.classList.contains("hide")){
 
  			show_add_box.classList.remove("hide");
- 			edit_description_input.focus();
+ 			edit_name_input.focus();
 		}else{
 
  			show_add_box.classList.add("hide");
- 			edit_description_input.value = "";
+ 			edit_name_input.value = "";
 		}
 
 
@@ -345,8 +351,8 @@
 	function collect_data(e)
 	{
 
-		var product_input = document.querySelector("#name");
-		if(product_input.value.trim() == "" || !isNaN(product_input.value.trim()))
+		var name_input = document.querySelector("#name");
+		if(name_input.value.trim() == "" || !isNaN(name_input.value.trim()))
 		{
 			alert("Please enter a valid product name");
 			return;
@@ -395,6 +401,7 @@
  		//create a form
 		var data = new FormData();
 
+
  		var image2_input = document.querySelector("#image2");
 		if(image2_input.files.length > 0)
 		{
@@ -414,7 +421,7 @@
 		}
 
 
-    data.append('name',product_input.value.trim());
+    data.append('name',name_input.value.trim());
 		data.append('brand',brand_input.value.trim());
 		data.append('description',description_input.value.trim());
 		data.append('quantity',quantity_input.value.trim());
@@ -430,6 +437,12 @@
 
 	function collect_edit_data(e)
 	{
+    var name_input = document.querySelector("#edit_name");
+    if(name_input.value.trim() == "" || !isNaN(name_input.value.trim()))
+    {
+      alert("Please enter a valid product name");
+      return;
+    }
 
 		var description_input = document.querySelector("#edit_description");
 		if(description_input.value.trim() == "" || !isNaN(description_input.value.trim()))
@@ -438,12 +451,6 @@
 			return;
 		}
 
-    var product_input = document.querySelector("#edit_name");
-		if(product_input.value.trim() == "" || !isNaN(product_input.value.trim()))
-		{
-			alert("Please enter a valid product name");
-			return;
-		}
 
     var brand_input = document.querySelector("#edit_brand");
 		if(brand_input.value.trim() == "" || !isNaN(brand_input.value.trim()))
@@ -502,8 +509,8 @@
 		}
 
 
-  data.append('name',product_input.value.trim());
-  data.append('brand',brand_input.value.trim());
+    data.append('name',name_input.value.trim());
+    data.append('brand',brand_input.value.trim());
 		data.append('description',description_input.value.trim());
 		data.append('quantity',quantity_input.value.trim());
 		data.append('category',category_input.value.trim());
@@ -533,7 +540,7 @@
 		ajax.send(JSON.stringify(data));
 	}
 
-	function send_data_files(formdata)
+	function send_data_files(data)
 	{
 
  		var ajax = new XMLHttpRequest();
@@ -547,14 +554,14 @@
 		});
 
 		ajax.open("POST","<?=ROOT?>product/ajax",true);
-		ajax.send(formdata);
+		ajax.send(data);
 	}
 
 
 
 	function handle_result(result)
 	{
- //console.log(result);
+ console.log(result);
 		if(result != ""){
 			var obj = JSON.parse(result);
 

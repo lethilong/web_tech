@@ -97,7 +97,7 @@ class Product extends Controller {
 		$User = $this->load_model('User');
 		$userData = $User->checkLogin();
 
-		if(is_object($user_data)){
+		if(is_object($userData)){
 			$data['user_data'] = $userData;
 		}
 
@@ -134,14 +134,15 @@ class Product extends Controller {
 
 				if($_SESSION['error'] != "")
 				{
+          $arr['message'] = $_SESSION['error'];
 					$_SESSION['error'] = "";
-					$arr['message'] = $_SESSION['error'];
 					$arr['message_type'] = "error";
 					$arr['data'] = "";
 					$arr['data_type'] = "add_new";
 
 					echo json_encode($arr);
-				}else
+				}
+        else
 				{
 					$arr['message'] = "Product added successfully!";
 					$arr['message_type'] = "info";
@@ -244,7 +245,7 @@ class Product extends Controller {
     }
   }
 */
-
+/*
   public function search() {
     $data['page_title'] = 'All products';
     $searched = $_POST['search'];
@@ -252,4 +253,5 @@ class Product extends Controller {
     $data['products'] = $results;
     $this->view('product/search', $data);
   }
+  */
 }

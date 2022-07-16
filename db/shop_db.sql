@@ -86,10 +86,9 @@ CREATE TABLE `order_details` (
 
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
-  `token` varchar(60) NOT NULL,
   `name` varchar(200) NOT NULL,
-  `description` text NOT NULL,
   `brand` varchar(66) NOT NULL,
+  `description` text NOT NULL,
   `category` int(11) NOT NULL,
   `price` double NOT NULL,
   `quantity` int(11) NOT NULL,
@@ -167,8 +166,7 @@ ALTER TABLE `products`
   ADD KEY `price` (`price`),
   ADD KEY `category` (`category`),
   ADD KEY `description` (`description`(768)),
-  ADD KEY `name` (`name`),
-  ADD KEY `token` (`token`);
+  ADD KEY `name` (`name`);
 
 --
 -- Indexes for table `users`
@@ -186,6 +184,11 @@ ALTER TABLE `users`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+  -- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `orders`

@@ -21,8 +21,7 @@ Class ProductModel
 		$arr['category'] 	= ucwords($DATA->category);
 		$arr['price'] 		= ucwords($DATA->price);
 		$arr['date'] 		= date("Y-m-d H:i:s");
-		$arr['token'] 	= $_SESSION['token'];
-		$arr['slag'] 		= $this->str_to_url($DATA->description);
+		$arr['slag'] 		= $this->strToURL($DATA->description);
 
 		if(!preg_match("/^[a-zA-Z 0-9._\-,]+$/", trim($arr['description'])))
 		{
@@ -90,7 +89,7 @@ Class ProductModel
 		}
 
 		if(!isset($_SESSION['error']) || $_SESSION['error'] == ""){
-			$query = "insert into products (name,brand,description,quantity,category,price,date,token,image,image2,image3,image4,slag) values (:name,:brand,:description,:quantity,:category,:price,:date,:token,:image,:image2,:image3,:image4,:slag)";
+			$query = "insert into products (name,brand,description,quantity,category,price,date,image,image2,image3,image4,slag) values (:name,:brand,:description,:quantity,:category,:price,:date,:image,:image2,:image3,:image4,:slag)";
 			$check = $DB->write($query,$arr);
 
 			if($check){
