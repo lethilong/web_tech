@@ -7,7 +7,7 @@ Class Cart extends Controller
 	{
 		
 		$User = $this->load_model('User');
-		//s = $this->load_model('Image');
+		$image_class = $this->load_model('Image');
 		$user_data = $User->checkLogin();
 
 		if(is_object($user_data)){

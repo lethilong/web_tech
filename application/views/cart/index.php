@@ -1,12 +1,7 @@
-<?php $this->view("header",$data); ?>
+<?php $this->view("components/header",$data); ?>
     <section id="cart_items" style="margin-top: -50px;">
         <div class="container">
-            <div class="breadcrumbs">
-                <ol class="breadcrumb">
-                  <li><a href="#">Trang chủ</a></li>
-                  <li class="active">Giỏ hàng</li>
-                </ol>
-            </div>
+
             <div class="table-responsive cart_info"  style="margin-top: -50px;">
                 <table class="table table-condensed">
                     <thead>
@@ -36,13 +31,13 @@
                                     </td>
                                     <td class="cart_quantity">
                                         <div class="cart_quantity_button">
-                                            <a class="cart_quantity_up" href="<?=ROOT?>cart/add_quantity/<?=$row->id?>"> + </a>
-                                            <input oninput="edit_quantity(this.value,'<?=$row->id?>')" class="cart_quantity_input" type="text" name="quantity" value="<?=$row->cart_qty?>" autocomplete="off" size="2">
                                             <a class="cart_quantity_down" href="<?=ROOT?>cart/subtract_quantity/<?=$row->id?>"> - </a>
+                                            <input oninput="edit_quantity(this.value,'<?=$row->id?>')" class="cart_quantity_input" type="text" name="quantity" value="<?=$row->cart_qty?>" autocomplete="off" size="2">
+                                            <a class="cart_quantity_up" href="<?=ROOT?>cart/add_quantity/<?=$row->id?>"> + </a>
                                         </div>
                                     </td>
                                     <td class="cart_total">
-                                        <p class="cart_total_price">$<?=$row->price * $row->cart_qty?></p>
+                                        <p class="cart_total_price">VND<?=$row->price * $row->cart_qty?></p>
                                     </td>
                                     <td class="cart_delete">
                                         <a class="cart_quantity_delete" delete_id="<?=$row->id?>" onclick="delete_item(this.getAttribute('delete_id'))" href="<?=ROOT?>cart/remove/<?=$row->id?>"><i class="fa fa-times"></i></a>
@@ -51,11 +46,14 @@
     
                             <?php endforeach; ?>
                         <?php else: ?>
-    
-                            <div style="font-size: 18px;text-align: center;padding: 6px;">Chưa có sản phẩm nào trong giỏ hàng</div>
+                            <tr>
+                                <td>
+                                    <div style="font-size: 18px;text-align: center;padding: 6px;">Chưa có sản phẩm nào trong giỏ hàng</div>
+                                <td>
+                            </tr>
                         <?php endif; ?>
                     </tbody>
-                </table><div class="pull-right" style="font-size: 25px;">Tổng chi phí: $<?=number_format($sub_total,2)?></div>
+                </table><div class="pull-right" style="font-size: 25px;">Tổng chi phí: <?=number_format($sub_total,2)?> VND</div>
             </div>
             <a href="<?=ROOT?>checkout">
                 <input type="button" class="btn btn-warning pull-right" value="Checkout >" name="">
@@ -129,4 +127,4 @@
 	}
 
  </script>
-<?php $this->view("footer",$data); ?>
+<?php $this->view("components/footer",$data); ?>
