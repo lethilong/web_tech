@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,4 +16,9 @@
 
 
 </html>
+=======
+<?php $this->view("components/header",$data); ?>
+<div>Home page</div>
+<?php $this->view("components/footer",$data); ?>
+>>>>>>> 899329932137a1820f994969b8febc21010df2a8
 
