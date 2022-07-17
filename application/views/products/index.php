@@ -14,7 +14,7 @@
 
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center">Featured Items</h2>
+						<h2 class="title text-center">Sản phẩm</h2>
 
 						<?php if(isset($ROWS) && is_array($ROWS)): ?>
 						<?php foreach($ROWS as $row): ?>
@@ -25,12 +25,6 @@
 						<?php endif; ?>
 
 						<br style="clear: both;">
-						<ul class="pagination">
-							<li class="active"><a href="">1</a></li>
-							<li><a href="">2</a></li>
-							<li><a href="">3</a></li>
-							<li><a href="">&raquo;</a></li>
-						</ul>
 					</div><!--features_items-->
 				</div>
 			</div>

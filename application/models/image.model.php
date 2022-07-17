@@ -229,6 +229,24 @@ class ImageModel
 		}
 	}
 
+  public function get_thumb_recommend($filename) {
+    $thumbnail = $filename . "_rcm_thumb.jpg";
+		if(file_exists($thumbnail))
+		{
+			return $thumbnail;
+		}
+
+		$this->crop_image($filename,$thumbnail,205,166);
+
+		if(file_exists($thumbnail))
+		{
+			return $thumbnail;
+		}else
+		{
+			return $filename;
+		}
+  }
+
 	//create thumbnail for profile image
 	public function get_thumb_profile($filename)
 	{

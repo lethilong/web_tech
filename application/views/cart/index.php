@@ -15,7 +15,7 @@
                         </tr>
                     </thead>
                     <tbody>
-    
+
                         <?php if($ROWS):?>
                             <?php foreach($ROWS as $row):?>
                                 <tr>
@@ -37,13 +37,13 @@
                                         </div>
                                     </td>
                                     <td class="cart_total">
-                                        <p class="cart_total_price">VND<?=$row->price * $row->cart_qty?></p>
+                                        <p class="cart_total_price"><?=$row->price * $row->cart_qty?> VND</p>
                                     </td>
                                     <td class="cart_delete">
                                         <a class="cart_quantity_delete" delete_id="<?=$row->id?>" onclick="delete_item(this.getAttribute('delete_id'))" href="<?=ROOT?>cart/remove/<?=$row->id?>"><i class="fa fa-times"></i></a>
                                     </td>
                                 </tr>
-    
+
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
@@ -64,9 +64,9 @@
         </div>
     </section> <!--/#cart_items-->
     <br><br>
-    
+
   <script type="text/javascript">
- 	
+
  	function edit_quantity(quantity,id){
 
  		if(isNaN(quantity))
@@ -89,7 +89,7 @@
 	{
 
  		var ajax = new XMLHttpRequest();
- 
+
 		ajax.addEventListener('readystatechange', function(){
 
 			if(ajax.readyState == 4 && ajax.status == 200)
