@@ -14,6 +14,8 @@ Class Home extends Controller {
 
         $ROWS = $DB->read("select * from products");
 
+        $data['page_title'] = "Home";
+        
         if($ROWS){
 			foreach ($ROWS as $key => $row) {
 				# code...
@@ -25,7 +27,6 @@ Class Home extends Controller {
 		$category = $this->load_model('category');
 		$data['categories'] = $category->get_all();
         $data['ROWS'] = $ROWS;
-        $data['page_title'] = "Home";
         $this->view("home", $data);
     }
 }
