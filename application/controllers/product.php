@@ -105,10 +105,27 @@ class Product extends Controller {
 
 		$ROW = $DB->read("select * from products where slag = :slag",['slag'=>$slag]);
 
+    //get all prods
+    $ROWS = $DB->read("select * from products");
+    shuffle($ROWS);
+    $ROWS = array_slice($ROWS, 0, 3);
+    $image_class = $this->load_model('Image');
+    if($ROWS){
+			foreach ($ROWS as $key => $row) {
+				# code...
+				$ROWS[$key]->image = $image_class->get_thumb_recommend($ROWS[$key]->image);
+			}
+		}
+    		$data['ROWS'] = $ROWS;
+
+    //get all categories
+		$category = $this->load_model('category');
+		$data['categories'] = $category->get_all();
+
 		$data['page_title'] = "Product Details";
 		$data['ROW'] = is_array($ROW) ? $ROW[0] : false;
 
-		$this->view("product/details",$data);
+		$this->view("products/details",$data);
   }
 
   public function ajax() {

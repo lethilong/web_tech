@@ -7,7 +7,7 @@
 		.add_edit_panel{
 
 			width: 500px;
-			height:600px;
+			height:700px;
 			background-color: #eae8e8;
 			box-shadow: 0px 0px 10px #aaa;
 			position: absolute;
@@ -47,7 +47,8 @@
 	                  	  	  <!--add new product-->
 	                  	  	  <div class="add_new add_edit_panel hide">
 
-				                  <h4 class="mb">Thêm mới sản phẩm</h4>
+				                  <h4 class="mb">Thêm mới sản phẩm </h4>
+
 			                      <form class="form-horizontal style-form" method="post">
 			                          <div class="form-group">
 			                              <label class="col-sm-2 col-sm-2 control-label">Tên sản phẩm</label>
@@ -284,7 +285,26 @@
 		if(show_edit_box.classList.contains("hide")){
 
  			show_edit_box.classList.remove("hide");
+      name_input.value = "";
  			name_input.focus();
+
+      var description_input = document.querySelector("#description");
+			description_input.value = "";
+
+      var brand_input = document.querySelector("#brand");
+			brand_input.value = "";
+
+			var quantity_input = document.querySelector("#quantity");
+			quantity_input.value = "";
+
+			var category_input = document.querySelector("#category");
+			category_input.value = "";
+
+			var price_input = document.querySelector("#price");
+			price_input.value = "";
+
+      // var product_images_input = document.querySelector(".js-product-images-add");
+      // product_images_input.innerHTML = '<img src="" />';
 		}else{
 
  			show_edit_box.classList.add("hide");

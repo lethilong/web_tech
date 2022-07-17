@@ -1,12 +1,12 @@
 <div class="col-sm-3">
 	<div class="left-sidebar">
-		<h2>Category</h2>
+		<h2>Danh mục</h2>
 		<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 
 			<?php if(isset($categories) && is_array($categories)):?>
 				<?php foreach($categories as $cat):?>
 
-					
+
 					 <!-- category without children -->
 					<div class="panel panel-default">
 						<div class="panel-heading">
