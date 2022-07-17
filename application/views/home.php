@@ -1,7 +1,7 @@
 <?php $this->view("components/header",$data); ?>
-<div>Home page</div>
+<h1 class="title text-center">Home page</h1>
 <br></br>
-<section?>
+<section>
 		<div class="container">
 			<div class="row">
 				
@@ -14,7 +14,7 @@
 						<?php if(is_array($ROWS)): ?>
 						<?php foreach($ROWS as $row): ?>
 
-							<?php $this->view("product.inc",$row); ?>
+							<?php $this->view("products/inc",$row); ?>
 
 						<?php endforeach; ?>
 						<?php endif; ?>
