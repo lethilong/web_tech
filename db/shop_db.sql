@@ -131,7 +131,28 @@ INSERT INTO `users` (`id`, `token`, `name`, `email`, `phone`, `address`, `passwo
 (6, 'LaVArrUXcRuo2j', 'Hoai Linh Le', 'linhle@gmail.com', '0975374215', 'Số 12, đường Phan Đà, phường Bến Thủy', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2022-07-13 07:51:26', 'customer');
 
 --
--- Indexes for dumped tables
+
+CREATE TABLE `settings` (
+  `id` int(11) NOT NULL,
+  `setting` varchar(30) DEFAULT NULL,
+  `value` varchar(2048) DEFAULT NULL,
+  `type` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `settings`
+--
+
+INSERT INTO `settings` (`id`, `setting`, `value`, `type`) VALUES
+(1, 'phone_number', '+3867 676636 76373', ''),
+(2, 'email', 'info@mywebsite.com', ''),
+(3, 'facebook_link', 'https://www.facebook.com', ''),
+(4, 'twitter_link', 'https://www.twitter.com', ''),
+(5, 'linkedin_link', '', ''),
+(6, 'google_plus_link', '', ''),
+(7, 'website_link', '', ''),
+(8, 'youtube_link', '', ''),
+(9, 'contact_info', 'E-Shopper Inc.\r\n\r\n<b>1 Đại Cồ Việt, Hai Bà Trưng, Hà Nội</b>\r\n\r\nMobile: +8412345678\r\n\r\nEmail: info@congngheweb.com', 'textarea');
 --
 
 --
