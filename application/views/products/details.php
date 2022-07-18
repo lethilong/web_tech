@@ -76,7 +76,8 @@
 								</span>
                 <p><b>Mô tả: </b><?= $ROW->description?></p>
 								<p><b>Thương hiệu: </b><?=$ROW->brand ?> </p>
-								<p><b>Danh mục: </b><?=$ROW->category ?> </p>
+								<p><b>Danh mục: </b><?=$category ?> </p>
+                <p><b>Còn hàng: </b><?=$ROW->quantity ?></p>
 								<a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
 							</div><!--/product-information-->
 						</div>

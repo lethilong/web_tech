@@ -104,6 +104,8 @@ class Product extends Controller {
 		$DB = Database::newInstance();
 
 		$ROW = $DB->read("select * from products where slag = :slag",['slag'=>$slag]);
+    $category = $DB->read("select category from categories where id = :id", ['id'=> $ROW[0]->category]);
+    $data['category']=$category[0]->category;
 
     //get all prods
     $ROWS = $DB->read("select * from products");
