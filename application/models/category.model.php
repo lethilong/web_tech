@@ -80,6 +80,12 @@ class CategoryModel
 		return $data[0];
 	}
 
+  public function get_one_by_id($id) {
+    $DB = Database::newInstance();
+    $data = $DB->read("select * from categories where id = :id", ["id" => $id]);
+    return $data[0];
+  }
+
 
 	public function get_all()
 	{
