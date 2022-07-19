@@ -10,19 +10,14 @@
 					 <!-- category without children -->
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h4 class="panel-title"><a href="<?=ROOT?>/product/category/<?=$cat->id?>"><?=$cat->category?></a></h4>
+							<h4 class="panel-title"><a href="<?=ROOT?>product/category/<?=$cat->id?>"><?=$cat->category?></a></h4>
 						</div>
 					</div>
 
 			 	<?php endforeach; ?>
 		 	<?php endif; ?>
 
-		</div><!--/category-products-->
-
-
-		<!-- <div class="shipping text-center">
-			<img src="<?= ASSETS ?>images/home/shipping.jpg" alt="" />
-		</div> -->
+		</div>
 
 	</div>
 </div>

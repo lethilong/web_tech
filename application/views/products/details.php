@@ -25,33 +25,33 @@
 										<div class="item active">
 										  <img src="<?=ROOT.$ROW->image?>" alt="">
  										</div>
-                    <?php if($ROW->image2) :?>
+                    					<?php if($ROW->image2) :?>
 										<div class="item">
 										  <img src="<?=ROOT.$ROW->image2?>" alt="">
  										</div>
-                    <?php endif; ?>
+                    					<?php endif; ?>
 
-                    <?php if($ROW->image3) :?>
+                    					<?php if($ROW->image3) :?>
 										<div class="item">
 										  <img src="<?=ROOT.$ROW->image3?>" alt="">
  										</div>
-                    <?php endif; ?>
-                    <?php if($ROW->image4) :?>
+                    					<?php endif; ?>
+                    					<?php if($ROW->image4) :?>
 										<div class="item">
 										  <img src="<?=ROOT.$ROW->image4?>" alt="">
  										</div>
-  				          <?php endif; ?>
+  				          				<?php endif; ?>
 									</div>
 
 								  <!-- Controls -->
-                  <?php if($ROW->image2 || $ROW->image3 || $ROW->image4) :?>
+                 				 <?php if($ROW->image2 || $ROW->image3 || $ROW->image4) :?>
 								  <a class="left item-control" href="#similar-product" data-slide="prev">
 									<i class="fa fa-angle-left"></i>
 								  </a>
 								  <a class="right item-control" href="#similar-product" data-slide="next">
 									<i class="fa fa-angle-right"></i>
 								  </a>
-                  <?php endif; ?>
+                  				<?php endif; ?>
 							</div>
 							</div>
 
@@ -63,7 +63,7 @@
 								<h2><?=$ROW->name?></h2>
 								<img src="images/product-details/rating.png" alt="" />
 								<span>
-									<span><?=$ROW->price?> VND</span>
+									<span><?=number_format($ROW->price)?> VND</span>
 									<label>Số lượng:</label>
 									<input type="text" value="1" />
 
@@ -101,7 +101,7 @@
 					<a href="<?=ROOT?>product/details/<?=$row->slag?>">
 													<div style="overflow: hidden;"><img class="product-image" src="<?= ROOT . $row->image?>" alt="" /></div>
 </a>
-													<h2><?= $row->price?> VND</h2>
+													<h2><?= number_format($row->price)?> VND</h2>
 													<p><?= $row->name ?></p>
 													<button type="button" class="btn btn-default add-to-cart"><a href="<?=ROOT?>cart/add_to_cart/<?=$row->id ?>">
                         <i class="fa fa-shopping-cart"></i> Thêm vào giỏ
