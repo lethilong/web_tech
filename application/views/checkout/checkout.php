@@ -17,19 +17,19 @@
 		<div class="container">
 			<div class="breadcrumbs">
 				<ol class="breadcrumb">
-				  <li><a href="#">Home</a></li>
+				  <li><a href="<?=ROOT?>home">Home</a></li>
 				  <li class="active">Check out</li>
 				</ol>
 			</div><!--/breadcrums-->
  
 
-	<?php if(isset($orders) && is_array($orders)):?>
+			<?php if(isset($orders) && is_array($orders)):?>
 
-			<div class="register-req">
-				<p style="text-align: center;">Xác nhận đơn hàng</p>
-			</div><!--/register-req-->
- 
- 				<?php foreach($orders as $order):?>
+					<div class="register-req">
+						<p style="text-align: center;">Xác nhận đơn hàng</p>
+					</div><!--/register-req-->
+		
+						<?php foreach($orders as $order):?>
 							<?php $order = (object)$order; ?>
 						 
  								<div class="js-order-details details" >
@@ -55,7 +55,7 @@
 										<?php if(isset($order_details) && is_array($order_details)):?>
 											<?php foreach($order_details as $detail):?>
 												<tbody>
-													<tr><td><?=$detail->cart_qty?></td><td><?=$detail->name?></td><td><?=$detail->price?></td><td><?=($detail->cart_qty * $detail->price)?></td></tr>
+													<tr><td><?=$detail->cart_qty?></td><td><?=$detail->name?></td><td><?=number_format($detail->price)?></td><td><?=number_format($detail->cart_qty * $detail->price)?></td></tr>
 												</tbody>
 													
 											<?php endforeach;?>
@@ -64,7 +64,7 @@
 											<div style="text-align: center;">Không có mặt hàng nào trong đơn hàng</div>
 										<?php endif;?>
 									</table>
-									<h3 class="pull-right">Thành tiền: <?=$sub_total?></h3>
+									<h3 class="pull-right">Thành tiền: <?=number_format($sub_total)?></h3>
 								</div>
 					 
 					<?php endforeach;?>

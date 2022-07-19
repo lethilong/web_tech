@@ -1,7 +1,12 @@
 <?php $this->view("components/header",$data); ?>
-    <section id="cart_items" style="margin-top: -50px;">
+    <section id="cart_items" >		
         <div class="container">
-
+            <div class="breadcrumbs">
+				<ol class="breadcrumb">
+				  <li><a href="<?=ROOT?>home">Home</a></li>
+				  <li class="active">Check out</li>
+				</ol>
+		    </div><!--/breadcrums-->
             <div class="table-responsive cart_info"  style="margin-top: -50px;">
                 <table class="table table-condensed">
                     <thead>
@@ -56,10 +61,7 @@
                 </table><div class="pull-right" style="font-size: 25px;">Tổng chi phí: <?=number_format($sub_total)?> VND</div>
             </div>
             <a href="<?=ROOT?>checkout">
-                <input type="button" class="btn btn-warning pull-right" value="Checkout >" name="">
-            </a>
-            <a href="<?=ROOT?>shop">
-                <input type="button" class="btn btn-warning pull-left" value="< Continue shopping" name="">
+                <input type="button" class="btn btn-warning pull-right" value="Mua hàng" name="">
             </a>
         </div>
     </section> <!--/#cart_items-->
