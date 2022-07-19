@@ -66,7 +66,7 @@ class Product extends Controller {
 		$DB = Database::newInstance();
 
  		$cat_id = null;
-		$check = $category->get_one_by_name($cat_find);
+		$check = $category->get_one_by_id($cat_find);
 		if(is_object($check)){
 			$cat_id = $check->id;
 		}
@@ -88,7 +88,7 @@ class Product extends Controller {
 		$data['ROWS'] = $ROWS;
 		$data['show_search'] = true;
 
-		$this->view("products/index",$data);
+		$this->view("products/category",$data);
 	}
 
   public function details($slag){
@@ -104,11 +104,11 @@ class Product extends Controller {
 		$DB = Database::newInstance();
 
 		$ROW = $DB->read("select * from products where slag = :slag",['slag'=>$slag]);
-    $category = $DB->read("select category from categories where id = :id", ['id'=> $ROW[0]->category]);
+    $category = $DB->read("select * from categories where id = :id", ['id'=> $ROW[0]->category]);
     $data['category']=$category[0]->category;
 
     //get all prods
-    $ROWS = $DB->read("select * from products");
+    $ROWS = $DB->read("select * from products where category = :cat", ["cat" => $category[0]->id]);
     shuffle($ROWS);
     $ROWS = array_slice($ROWS, 0, 3);
     $image_class = $this->load_model('Image');
