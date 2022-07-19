@@ -59,7 +59,7 @@ CREATE TABLE `orders` (
   `delivery_name` varchar(100) NOT NULL,
   `delivery_phone` varchar(10) NOT NULL,
   `delivery_address` varchar(200) NOT NULL,
-  `total_price` double NOT NULL,
+  `total_price` int(20) NOT NULL,
   `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -73,8 +73,8 @@ CREATE TABLE `order_details` (
   `id` int(20) NOT NULL,
   `orderId` int(20) NOT NULL,
   `qty` int(10) NOT NULL,
-  `amount` double NOT NULL,
-  `total` double NOT NULL,
+  `amount` int(20) NOT NULL,
+  `total` int(20) NOT NULL,
   `productId` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -90,7 +90,7 @@ CREATE TABLE `products` (
   `brand` varchar(66) NOT NULL,
   `description` text NOT NULL,
   `category` int(11) NOT NULL,
-  `price` double NOT NULL,
+  `price` int(20) NOT NULL,
   `quantity` int(11) NOT NULL,
   `image` varchar(500) NOT NULL,
   `image2` varchar(500) DEFAULT NULL,
