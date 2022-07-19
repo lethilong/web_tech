@@ -10,7 +10,7 @@
 					 <!-- category without children -->
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h4 class="panel-title"><a href="#"><?=$cat->category?></a></h4>
+							<h4 class="panel-title"><a href="<?=ROOT?>/product/category/<?=$cat->id?>"><?=$cat->category?></a></h4>
 						</div>
 					</div>
 
