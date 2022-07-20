@@ -1,5 +1,5 @@
 <?php $this->view("components/header",$data); ?>
-    <section id="cart_items" >		
+    <section id="cart_items" >
         <div class="container">
             <div class="breadcrumbs">
 				<ol class="breadcrumb">
@@ -32,7 +32,7 @@
                                         <p>prod ID: <?=$row->id?></p>
                                     </td>
                                     <td class="cart_price">
-                                        <p><?=number_format($row->price)?></p>
+                                        <p><?=number_format($row->price)?> VND</p>
                                     </td>
                                     <td class="cart_quantity">
                                         <div class="cart_quantity_button">

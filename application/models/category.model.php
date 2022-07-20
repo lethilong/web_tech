@@ -116,6 +116,8 @@ class CategoryModel
 		$id = $data->id;
 		$DB = Database::newInstance();
 		$query = "delete from categories where id = '$id' limit 1";
+    $query2 = "delete from products where category = '$id'";
 		$DB->write($query);
+    $DB->write($query2);
 	}
 }
