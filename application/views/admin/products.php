@@ -378,13 +378,13 @@
 			return;
 		}
 
-    var description_input = document.querySelector("#description");
+    	var description_input = document.querySelector("#description");
 		if(description_input.value.trim() == "" || !isNaN(description_input.value.trim()))
 		{
 			alert("Please enter a valid description");
 			return;
 		}
-    var brand_input = document.querySelector("#brand");
+   		var brand_input = document.querySelector("#brand");
 		if(brand_input.value.trim() == "" || !isNaN(brand_input.value.trim()))
 		{
 			alert("Please enter a valid brand");
@@ -441,7 +441,7 @@
 		}
 
 
-    data.append('name',name_input.value.trim());
+    	data.append('name',name_input.value.trim());
 		data.append('brand',brand_input.value.trim());
 		data.append('description',description_input.value.trim());
 		data.append('quantity',quantity_input.value.trim());
@@ -529,8 +529,8 @@
 		}
 
 
-    data.append('name',name_input.value.trim());
-    data.append('brand',brand_input.value.trim());
+    	data.append('name',name_input.value.trim());
+    	data.append('brand',brand_input.value.trim());
 		data.append('description',description_input.value.trim());
 		data.append('quantity',quantity_input.value.trim());
 		data.append('category',category_input.value.trim());
