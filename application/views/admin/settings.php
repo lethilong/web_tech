@@ -3,7 +3,7 @@
 <?php $this->view("admin/sidebar",$data); ?>
 
 <style type="text/css">
-	
+
 	.details{
 
 		background-color: #eee;
@@ -23,7 +23,7 @@
 		<?php if($type == "socials"):?>
 
 			<thead>
-				<tr><th>Setting</th><th>Value</th></tr>
+				<tr><th> Cài đặt</th><th> Thông tin</th></tr>
 			</thead>
 			<tbody>
 				<?php if(isset($settings) && is_array($settings)):?>
@@ -35,7 +35,7 @@
 								<?php if($setting->type == "" || $setting->type == "text"):?>
 									<input placeholder="<?=ucwords(str_replace("_", " ", $setting->setting))?>" name="<?=$setting->setting?>" class="form-control" type="text" value="<?=$setting->value?>" />
 								<?php elseif($setting->type == "textarea"):?>
-									<textarea placeholder="<?=ucwords(str_replace("_", " ", $setting->setting))?>" name="<?=$setting->setting?>" class="form-control" ><?=$setting->value?></textarea> 
+									<textarea placeholder="<?=ucwords(str_replace("_", " ", $setting->setting))?>" name="<?=$setting->setting?>" class="form-control" ><?=$setting->value?></textarea>
 								<?php endif;?>
 							</td>
 						</tr>
@@ -48,7 +48,7 @@
 
 			<?php if($action == "show"):?>
 				<thead>
-					<tr><th>Header 1 Text</th><th>Header 2 Text</th><th>Main Message</th><th>Product Link</th><th>Product Image</th><th>Disabled</th><th>Action</th></tr>
+					<tr><th> Tiêu đề 1</th><th> Tiêu đề 2</th><th> Thông tin</th><th> Link sản phẩm</th><th> Hình ảnh</th><th> Hết hạn</th><th> Tuỳ chọn </th></tr>
 				</thead>
 				<tbody>
 					<?php if(isset($rows) && is_array($rows)):?>
@@ -66,33 +66,33 @@
 					<?php endif;?>
 				</tbody>
 				<a href="<?=ROOT?>admin/settings/slider_images?action=add">
-					<input type="button" value="Add Row" class="btn btn-warning pull-right" >
+					<input type="button" value="Thêm" class="btn btn-warning pull-left" >
 				</a>
 			<?php elseif($action == "add"):?>
 
-				<h2>Add New Row</h2>
+				<h2> Thêm</h2>
 				<div class="form-group">
-					<label for="header1_text">Header 1 Text</label>
+					<label for="header1_text"> Tiêu đề 1</label>
 					<input autofocus id="header1_text" type="text" value="<?=(isset($POST['header1_text'])) ? $POST['header1_text']: '';?>" class="form-control" name="header1_text" placeholder="">
 				</div>
 
 				<div class="form-group">
-					<label for="header2_text">Header 2 Text</label>
+					<label for="header2_text"> Tiêu đề 2</label>
 					<input id="header2_text" type="text" value="<?=(isset($POST['header2_text'])) ? $POST['header2_text']: '';?>" class="form-control" name="header2_text" placeholder="">
 				</div>
 
 				<div class="form-group">
-					<label for="text">Main Message</label>
+					<label for="text"> Thông tin</label>
  					<textarea name="text" id="text" class="form-control"><?=(isset($POST['text'])) ? $POST['text']: '';?></textarea>
 				</div>
 
 				<div class="form-group">
-					<label for="link">Content Link</label>
+					<label for="link">Link sản phẩm</label>
 					<input id="link" type="text" value="<?=(isset($POST['link'])) ? $POST['link']: '';?>" class="form-control" name="link" placeholder="e.g http://yourwebsite.com/your_product">
 				</div>
 
 				<div class="form-group">
-					<label for="image">Slider Image</label>
+					<label for="image"> Ảnh quảng cáo</label>
 					<input id="image" type="file" class="form-control" name="image">
 				</div>
 				<input type="submit" value="Add" class="btn btn-primary">

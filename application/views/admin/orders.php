@@ -3,7 +3,7 @@
 <?php $this->view("admin/sidebar",$data); ?>
 
 <style type="text/css">
-	
+
 	.details{
 
 		background-color: #eee;
@@ -20,7 +20,7 @@
 <table class="table table-striped table-advance table-hover">
 
 	<thead>
-		<tr><th>Order no</th><th>Customer</th><th>Order date</th><th>Total</th><th>Delivery Address</th><th>City/State</th><th>Mobile Phone</th><th>...</th></tr>
+		<tr><th>Đơn hàng</th><th> Khách hàng</th><th> Ngày đặt</th><th> Tổng tiền </th><th> Địa chỉ giao hàng</th><th> Thành phố</th><th> Số điện thoại</th><th>...</th></tr>
 	</thead>
 	<tbody onclick="show_details(event)">
 		<?php foreach($orders as $order):?>
@@ -32,7 +32,7 @@
 						<a style="float: right;cursor: pointer;">Close</a>
 						<h3>Order #<?=$order->id?></h3>
 						<h4>Customer: <?=$order->user->name?></h4>
-						
+
 						<!--order details-->
 						<div style="display: flex;">
 							<table class="table" style="flex: 1;margin: 4px;">
@@ -45,7 +45,7 @@
 								<tr><th>Home Phone</th><td><?=$order->home_phone?></td></tr>
 								<tr><th>Mobile Phone</th><td><?=$order->mobile_phone?></td></tr>
 								<tr><th>Date</th><td><?=$order->date?></td></tr>
-								
+
 							</table>
 						</div>
 						<hr>
@@ -53,13 +53,13 @@
 						<table class="table">
 							<thead>
 								<tr><th>Qty</th><th>Description</th><th>Amount</th><th>Total</th></tr>
-							</thead>	
+							</thead>
 							<?php if(isset($order->details) && is_array($order->details)):?>
 								<?php foreach($order->details as $detail):?>
 									<tbody>
 										<tr><td><?=$detail->qty?></td><td><?=$detail->description?></td><td><?=$detail->amount?></td><td><?=$detail->total?></td></tr>
 									</tbody>
-										
+
 								<?php endforeach;?>
 
 							<?php else: ?>
@@ -77,7 +77,7 @@
 
 
 <script type="text/javascript">
-	
+
 	function show_details(e){
 
 		var row = e.target.parentNode;
@@ -85,7 +85,7 @@
 			row = row.parentNode;
 
 		var details = row.querySelector(".js-order-details");
-		
+
 		//get all rows
 		var all = e.currentTarget.querySelectorAll(".js-order-details");
 		for (var i = 0; i < all.length; i++) {

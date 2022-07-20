@@ -4,10 +4,10 @@
 
 <section id="main-content">
           <section class="wrapper">
-<div style="min-height: 300px;max-width: 1000px;margin: auto;">
-	
+<di style="min-height: 300px;max-width: 1000px;margin: auto;">
+
 	<style type="text/css">
-		
+
 		.col-md-6{
 			color: #293444;
 		}
@@ -39,39 +39,39 @@
 
 	<!--profile data-->
 <?php if(is_object($profile_data)): ?>
+    <div class="col-md-4 mb" style="flex:1;background-color: #eee;text-align: center;box-shadow: 0px 0px 20px #aaa; border: solid thin #ddd; margin: 0 33%; max-width: 500px;">
+      <!-- WHITE PANEL - TOP USER -->
+      <div class="white-panel pn">
+        <div class="white-header" style="color:grey">
+          <h5>Tài khoản</h5>
+        </div>
+        <p><img src="<?=ASSETS ?>admin/img/ui-zac.jpg" class="img-circle" width="80"></p>
+        <p><b><?=$profile_data->name?></b></p>
+        <div class="row">
+          <div class="col-md-6">
+            <p id="user_text" class="small mt">THÀNH VIÊN TỪ</p>
+            <p><?=date("jS M Y",strtotime($profile_data->date))?></p>
+          </div>
+          <div class="col-md-6">
+            <p id="user_text" class="small mt">TỔNG CHI TIÊU</p>
+            <p>1.000.000 VND</p>
+          </div>
 
-	<div class="col-md-4 mb" style="flex:1;background-color: #eee;text-align: center;box-shadow: 0px 0px 20px #aaa; border: solid thin #ddd;">
-		<!-- WHITE PANEL - TOP USER -->
-		<div class="white-panel pn">
-			<div class="white-header" style="color:grey">
-				<h5>Tài khoản</h5>
-			</div>
-			<p><img src="<?=ASSETS ?>admin/img/ui-zac.jpg" class="img-circle" width="80"></p>
-			<p><b><?=$profile_data->name?></b></p>
-			<div class="row">
-				<div class="col-md-6">
-					<p id="user_text" class="small mt">THÀNH VIÊN TỪ</p>
-					<p><?=date("jS M Y",strtotime($profile_data->date))?></p>
-				</div>
-				<div class="col-md-6">
-					<p id="user_text" class="small mt">TỔNG CHI TIÊU</p>
-					<p>1.000.000 VND</p>
-				</div>
+        </div>
+        <hr style="color:#888">
+        <div class="row">
+          <div class="col-md-6">
+            <p id="user_text" class="small mt" style="cursor: pointer;color: #13b8ea;"><i class="fa fa-edit"></i> EDIT</p>
+           </div>
+          <div class="col-md-6">
+            <p id="user_text" class="small mt" style="cursor: pointer;color:#e18b57;">DELETE</p>
+           </div>
 
-			</div>
-			<hr style="color:#888">
-			<div class="row">
-				<div class="col-md-6">
-					<p id="user_text" class="small mt" style="cursor: pointer;color: #13b8ea;"><i class="fa fa-edit"></i> EDIT</p>
- 				</div>
-				<div class="col-md-6">
-					<p id="user_text" class="small mt" style="cursor: pointer;color:#e18b57;">DELETE</p>
- 				</div>
+        </div>
 
-			</div>
+      </div>
+    </div><!-- /col-md-4 -->
 
-		</div>
-	</div><!-- /col-md-4 -->
 
 
 	<!--end profile data-->
@@ -95,13 +95,13 @@
 									<table class="table">
 										<thead>
 											<tr><th>Qty</th><th>Description</th><th>Amount</th><th>Total</th></tr>
-										</thead>	
+										</thead>
 										<?php if(isset($order->details) && is_array($order->details)):?>
 											<?php foreach($order->details as $detail):?>
 												<tbody>
 													<tr><td><?=$detail->qty?></td><td><?=$detail->description?></td><td><?=$detail->amount?></td><td><?=$detail->total?></td></tr>
 												</tbody>
-													
+
 											<?php endforeach;?>
 
 										<?php else: ?>
@@ -115,7 +115,7 @@
 					<?php endforeach;?>
 				</tbody>
 			</table>
-		
+
 	<?php else: ?>
 		<h3 style="text-align: center;">Người dùng chưa có đơn hàng nào</h3>
 	<?php endif;?>
@@ -129,7 +129,7 @@
 </section>
 
 <script type="text/javascript">
-	
+
 	function show_details(e){
 
 		var row = e.target.parentNode;
@@ -137,7 +137,7 @@
 			row = row.parentNode;
 
 		var details = row.querySelector(".js-order-details");
-		
+
 		//get all rows
 		var all = e.currentTarget.querySelectorAll(".js-order-details");
 		for (var i = 0; i < all.length; i++) {
