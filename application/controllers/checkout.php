@@ -46,6 +46,8 @@ Class Checkout extends Controller {
 			}
 		}
 
+		$data['order_details'] = $ROWS;
+
 		if(isset($_SESSION['POST_DATA'])){
 			$data['orders'][] = $_SESSION['POST_DATA'];
 		}
