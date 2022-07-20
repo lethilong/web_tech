@@ -3,7 +3,7 @@
 <?php $this->view("admin/sidebar",$data); ?>
 
 <style type="text/css">
-	
+
 	.details{
 
 		background-color: #eee;
@@ -43,7 +43,7 @@
 							<table class="table" style="flex: 1;margin: 4px;">
 								<tr><th>Địa chỉ nhận hàng</th><td><?=$order->delivery_address?></td></tr>
 								<tr><th>Date</th><td><?=$order->date?></td></tr>
-								
+
 							</table>
 						</div>
 						<hr>
@@ -57,7 +57,7 @@
 									<tbody>
 										<tr><td><?=$detail->productId?></td><td><?=$detail->qty?></td><td><?=number_format($detail->amount)?></td><td><?=number_format($detail->total)?></td></tr>
 									</tbody>
-										
+
 								<?php endforeach;?>
 
 							<?php else: ?>
@@ -75,7 +75,7 @@
 
 
 <script type="text/javascript">
-	
+
 	function show_details(e){
 
 		var row = e.target.parentNode;
@@ -83,7 +83,7 @@
 			row = row.parentNode;
 
 		var details = row.querySelector(".js-order-details");
-		
+
 		//get all rows
 		var all = e.currentTarget.querySelectorAll(".js-order-details");
 		for (var i = 0; i < all.length; i++) {

@@ -64,10 +64,10 @@
 								<img src="images/product-details/rating.png" alt="" />
 								<span>
 									<span><?=number_format($ROW->price)?> VND</span>
-									<label>Số lượng:</label>
-									<input type="text" value="1" />
+									<!-- <label>Số lượng:</label>
+									<input type="text" value="1" /> -->
 
-                    <button type="button" class="btn btn-default cart">
+                    <button type="button" class="btn btn-default cart" style="float: right;">
                       <a href="<?=ROOT?>cart/add_to_cart/<?=$ROW->id ?>">
                         <i class="fa fa-shopping-cart"></i> Thêm vào giỏ
                     </a>

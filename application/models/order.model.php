@@ -6,7 +6,7 @@ Class OrderModel extends Controller {
         $orders = false;
         $db = Database::newInstance();
         date_default_timezone_set("Asia/Ho_Chi_Minh");
-        $query = "select * from orders order by id";
+        $query = "select * from orders order by id desc";
         $orders = $db->read($query);
         return $orders;
     }
@@ -17,7 +17,7 @@ Class OrderModel extends Controller {
 		$data['id'] = addslashes($id);
 		$db = Database::newInstance();
 
-		$query = "select * from order_details where orderid = :id order by id desc";
+		$query = "select * from order_details where orderId = :id order by id desc";
 		$details = $db->read($query,$data);
 
 		return $details;
@@ -86,4 +86,17 @@ Class OrderModel extends Controller {
 
     //     }
     // }
+    public function get_orders_by_user($user_url){
+
+		$orders = false;
+
+		$db = Database::newInstance();
+		$data['user_token'] = $user_url;
+
+		$query = "select * from orders where user_token = :user_token order by id desc";
+		$orders = $db->read($query,$data);
+
+		return $orders;
+
+	}
 }

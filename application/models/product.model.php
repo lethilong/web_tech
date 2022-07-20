@@ -243,9 +243,9 @@ Class ProductModel
 						<td>'.$cat_row->name.'</td>
 						<td>'.$cat_row->brand.'</td>
 						<td>'.$cat_row->description.'</td>
-						<td>'.$cat_row->quantity.'</td>
+						<td>'.number_format($cat_row->quantity).'</td>
 						<td>'.$one_cat->category.'</td>
-						<td>'.$cat_row->price.'</td>
+						<td>'.number_format($cat_row->price).'</td>
 						<td>'.date("jS M, Y H:i:s",strtotime($cat_row->date)).'</td>
 						<td><img src="'.ROOT . $cat_row->image.'" style="width:70px; height:70px;" /></td>
 

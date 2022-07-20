@@ -1,5 +1,5 @@
 <?php $this->view("components/header",$data); ?>
-<h1 class="title text-center">Home page</h1>
+<?php $this->view("slider",$data); ?>
 <br></br>
 <div class="zalo-chat-widget" data-oaid="4461409502325086296" data-welcome-message="Xin chào!" data-autopopup="0" data-width="" data-height=""></div>
 

@@ -21,13 +21,13 @@
 
                   </li> -->
 
-                  <li class="sub-menu">
+                  <!-- <li class="sub-menu">
                       <a <?=(isset($current_page) && $current_page == "dashboard") ? ' class="active" ':''; ?> href="<?=ROOT?>admin" >
                           <i class="fa fa-barcode"></i>
                           <span>Dashboard</span>
                       </a>
 
-                  </li>
+                  </li> -->
 
                   <li class="sub-menu">
                       <a <?=(isset($current_page) && $current_page == "products") ? ' class="active" ':''; ?> href="<?=ROOT?>admin/products" >
@@ -76,14 +76,14 @@
                   <li class="sub-menu">
                       <a <?=(isset($current_page) && $current_page == "settings") ? ' class="active" ':''; ?> href="<?=ROOT?>admin/settings" >
                           <i class="fa fa-cogs"></i>
-                          <span>Settings</span>
+                          <span> Cài đặt</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="<?=ROOT?>admin/settings/slider_images">Slider Images</a></li>
+                          <li><a  href="<?=ROOT?>admin/settings/slider_images">Ảnh quảng cáo</a></li>
                       </ul>
 
                       <ul class="sub">
-                          <li><a  href="<?=ROOT?>admin/settings/socials">Social links / Contacts</a></li>
+                          <li><a  href="<?=ROOT?>admin/settings/socials">Liên hệ</a></li>
                       </ul>
 
 
