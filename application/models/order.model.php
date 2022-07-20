@@ -22,4 +22,18 @@ Class OrderModel extends Controller {
 		return $details;
 
 	}
+
+    public function get_orders_by_user($user_url){
+
+		$orders = false;
+
+		$db = Database::newInstance();
+		$data['user_url'] = $user_url;
+
+		$query = "select * from orders where user_url = :user_url order by id desc limit 100";
+		$orders = $db->read($query,$data);
+
+		return $orders;
+
+	}
 }
