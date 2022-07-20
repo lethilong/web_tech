@@ -44,7 +44,7 @@ Class User extends Controller
 		}
 
         if(is_array($profile_data)){
-			$orders = $Order->get_orders_by_user($profile_data->url_address);
+			$orders = $Order->get_orders_by_user($profile_data->token);
 		}else{
 			$orders = false;
 		}
