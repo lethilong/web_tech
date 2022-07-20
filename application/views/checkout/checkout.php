@@ -29,11 +29,11 @@
 						<!--order details-->
 						<div style="display: flex;">
 							<table class="table" style="flex: 1;margin: 4px;">
-								<tr><th>Người nhận</th><td><input value="<?=$data['user_data']->name?>"/></td></tr>
-								<tr><th>Điện thoại</th><td><input value="<?=$data['user_data']->phone?>"/></td></tr>									
+								<tr><th>Người nhận</th><td><input value="<?=$data['user_data']->name ?>" id="delivery_receiver" /></td></tr>
+								<tr><th>Điện thoại</th><td><input value="<?=$data['user_data']->phone?>" id="delivery_phone"/></td></tr>									
 							</table>
 							<table class="table" style="flex: 1;margin: 4px;">
-								<tr><th>Địa chỉ</th><td><input value="<?=$data['user_data']->address?>"/></td></tr>	
+								<tr><th>Địa chỉ</th><td><input value="<?=$data['user_data']->address?>" id="delivery_address"/></td></tr>	
 							</table>
 						</div>
 						<!-- <table style="width: 100%;background-color: #eee"><tr><td style="text-align: center;padding: 1em;"><?=$order->message?></td></tr></table> -->
@@ -42,12 +42,12 @@
 						<h4>Chi tiết đơn hàng</h4>
 							<table class="table">
 								<thead>
-									<tr><th>Số lượng</th><th>Sản phẩm</th><th>Đơn giá</th><th>Tổng tiền</th></tr>
+									<tr><th>Sản phẩm</th><th>Số lượng</th><th>Đơn giá</th><th>Tổng tiền</th></tr>
 								</thead>	
 								<?php if(isset($order_details) && is_array($order_details)):?>
 									<?php foreach($order_details as $detail):?>
 										<tbody>
-											<tr><td><?=$detail->cart_qty?></td><td><?=$detail->name?></td><td><?=number_format($detail->price)?></td><td><?=number_format($detail->cart_qty * $detail->price)?></td></tr>
+											<tr><td><?=$detail->name?></td><td><?=$detail->cart_qty?></td><td><?=number_format($detail->price)?></td><td><?=number_format($detail->cart_qty * $detail->price)?></td></tr>
 										</tbody>
 													
 									<?php endforeach;?>
@@ -64,62 +64,49 @@
 				<input type="button" class="btn btn-warning pull-left" value="Huỷ" name="">
 			</a>
 			<form method="post">
-				<input type="submit" class="btn btn-warning pull-right" value="Đặt hàng" name="">
+				<input type="button" class="btn btn-warning pull-right" value="Đặt hàng" name="" onclick="send_delivery_data()">
 			</form>
 		</div>
 	</section> <!--/#cart_items-->
 
 	<script type="text/javascript">
-		
-		function get_states(id){
 
-	  		send_data({
-	  			id:id.trim()
-	 		},"get_states");
-	 	}
+		function send_delivery_data() {
+			var receiver_input = document.querySelector("#delivery_receiver").value;
+			var phone_input = document.querySelector("#delivery_phone").value;
+			var address_input = document.querySelector("#delivery_address").value;
+			console.log(receiver_input);
+			send_data({
+				delivery_name: receiver_input,
+				delivery_phone: phone_input,
+				delivery_address: address_input
+			})
+			
 
-	 	function send_data(data = {},data_type)
-		{
+		}
 
-	 		var ajax = new XMLHttpRequest();
-	 
-			ajax.addEventListener('readystatechange', function(){
+		function send_data(data = {}) {
 
-				if(ajax.readyState == 4 && ajax.status == 200)
-				{
+			var ajax = new XMLHttpRequest();
+
+			ajax.addEventListener('readystatechange', function() {
+
+				if (ajax.readyState == 4 && ajax.status == 200) {
 					handle_result(ajax.responseText);
 				}
 			});
+			console.log(data);
 
-			ajax.open("POST","<?=ROOT?>ajax_checkout/"+data_type+"/"+ JSON.stringify(data),true);
-			ajax.send();
+			ajax.open("POST", "<?= ROOT?>checkout/ajax_checkout", true);
+			ajax.send(JSON.stringify(data));
 		}
 
-		function handle_result(result)
-		{
+		function handle_result(result) {
 
-			console.log(result);
-			if(result != ""){
-				var obj = JSON.parse(result);
-
-				if(typeof obj.data_type != 'undefined')
-				{
-
-					if(obj.data_type == "get_states"){
-						
-						var select_input = document.querySelector(".js-state");
-						select_input.innerHTML = "<option>-- State / Province / Region --</option>";
-
-						for (var i = 0; i < obj.data.length; i++) {
- 							
-							select_input.innerHTML += "<option value='"+obj.data[i].id+"'>"+obj.data[i].state+"</option>";
-						}
-					}
-				}
-
+			if (result != "") {
+				alert("Tạo đơn hàng thành công!");
+				window.location="<?=ROOT?>";
 			}
-
-
 		}
 
 	</script>

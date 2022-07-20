@@ -153,8 +153,8 @@
               	  	  						<img src="">
               	  	  					</div>
 
-              	  	  					<button type="button" class="btn btn-warning" onclick="show_add_new(event)" style="position:absolute;bottom:10px; left:10px;">Close</button>
-              	  	  					<button type="button" class="btn btn-primary" onclick="collect_data(event)" style="position:absolute;bottom:10px; right:10px;">Save</button>
+              	  	  					<button type="button" class="btn btn-warning" onclick="show_add_new(event)" style="position:absolute;bottom:10px; left:10px;"> Đóng</button>
+              	  	  					<button type="button" class="btn btn-primary" onclick="collect_data(event)" style="position:absolute;bottom:10px; right:10px;">Lưu</button>
 
 			                      </form>
 
@@ -251,8 +251,8 @@
               	  	  					<div class="js-product-images-edit edit_product_images">
 
               	  	  					</div>
-              	  	  					<button type="button" class="btn btn-warning" onclick="show_edit_product(0,'',false)" style="position:absolute;bottom:10px; left:10px;">Cancel</button>
-              	  	  					<button type="button" class="btn btn-primary" onclick="collect_edit_data(event)" style="position:absolute;bottom:10px; right:10px;">Save</button>
+              	  	  					<button type="button" class="btn btn-warning" onclick="show_edit_product(0,'',false)" style="position:absolute;bottom:10px; left:10px;">Huỷ bỏ</button>
+              	  	  					<button type="button" class="btn btn-primary" onclick="collect_edit_data(event)" style="position:absolute;bottom:10px; right:10px;">Lưu</button>
 
 			                      </form>
 
@@ -450,14 +450,14 @@
 			return;
 		}
 
-    var description_input = document.querySelector("#description");
+    	var description_input = document.querySelector("#description");
 		if(description_input.value.trim() == "" || !isNaN(description_input.value.trim()))
 		{
 			// alert("Please enter a valid description");
       validate(description_input,"Please enter a valid description" );
 			return;
 		}
-    var brand_input = document.querySelector("#brand");
+   		var brand_input = document.querySelector("#brand");
 		if(brand_input.value.trim() == "" || !isNaN(brand_input.value.trim()))
 		{
 			// alert("Please enter a valid brand");
@@ -523,7 +523,7 @@
 		}
 
 
-    data.append('name',name_input.value.trim());
+    	data.append('name',name_input.value.trim());
 		data.append('brand',brand_input.value.trim());
 		data.append('description',description_input.value.trim());
 		data.append('quantity',quantity_input.value.trim());
@@ -617,8 +617,8 @@
 		}
 
 
-    data.append('name',name_input.value.trim());
-    data.append('brand',brand_input.value.trim());
+    	data.append('name',name_input.value.trim());
+    	data.append('brand',brand_input.value.trim());
 		data.append('description',description_input.value.trim());
 		data.append('quantity',quantity_input.value.trim());
 		data.append('category',category_input.value.trim());
