@@ -3,6 +3,21 @@
 <?php $this->view("admin/sidebar",$data); ?>
 
 	<style type="text/css">
+    	.title_pu {
+		text-align: center;
+	}
+
+  .popup {
+		background-color: #eae8e8;
+		box-shadow: 0px 0px 10px #aaa;
+		/* position: absolute; */
+		padding: 6px;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 250px;
+	}
 
 		.add_edit_panel{
 
@@ -54,6 +69,7 @@
 			                              <label class="col-sm-2 col-sm-2 control-label">Tên sản phẩm</label>
 			                              <div class="col-sm-10">
 			                                  <input id="name" name="name" type="text" class="form-control" autofocus required>
+
 			                              </div>
 			                          </div>
 			                          <br><br style="clear: both;">
@@ -246,6 +262,24 @@
 
 
 
+
+
+					<br><br>
+				</div>
+<!-- Popup -->
+          <div class="popup hide">
+
+					<h4 class="title_pu">Bạn có muốn xoá sản phẩm?</h4>
+
+					<button type="button" class="btn btn-warning" onclick="close_popup(false)" style="position:absolute;bottom:10px; left:10px; width: 80px">Đóng</button>
+					<button type="button" class="btn btn-primary" onclick="close_popup(true)" style="position:absolute;bottom:10px; right:10px; width: 80px">Xóa</button>
+
+
+
+					<br><br>
+				</div>
+
+
 	                  	  	  <hr>
 
 
@@ -279,6 +313,12 @@
 
 	function show_add_new()
 	{
+
+      const list = document.querySelectorAll('.validate');
+      for (let e of list ) {
+        e.classList.add('hide');
+      }
+
 		var show_edit_box = document.querySelector(".add_new");
  		var name_input = document.querySelector("#name");
 
@@ -304,7 +344,7 @@
 			price_input.value = "";
 
       // var product_images_input = document.querySelector(".js-product-images-add");
-      // product_images_input.innerHTML = '<img src="" />';
+      // product_images_input.innerHTML = '';
 		}else{
 
  			show_edit_box.classList.add("hide");
@@ -316,6 +356,10 @@
 
 	function show_edit_product(id,product,e)
 	{
+    const list = document.querySelectorAll('.validate');
+      for (let e of list ) {
+        e.classList.add('hide');
+      }
 
 		var show_add_box = document.querySelector(".edit_product");
 	 	var edit_name_input = document.querySelector("#edit_name");
@@ -368,56 +412,94 @@
 
 	}
 
+  function close_popup(action) {
+		var popup = document.querySelector(".popup");
+		if (!popup.classList.contains('hide')) {
+			popup.classList.add("hide");
+		} else {
+			popup.classList.remove("hide")
+		}
+		if (action == true) {
+			send_data({
+				data_type: "delete_row",
+				id: EDIT_ID
+			});
+		}
+	}
+
+  function insertAfter(newNode, existingNode) {
+            existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
+        }
+  function validate(element, msg) {
+    const p = document.createElement('p');
+    p.innerText = msg;
+    p.setAttribute("style", "color: red;");
+    p.className = 'validate';
+    insertAfter(p, element);
+
+  }
+
 	function collect_data(e)
 	{
 
 		var name_input = document.querySelector("#name");
 		if(name_input.value.trim() == "" || !isNaN(name_input.value.trim()))
 		{
-			alert("Please enter a valid product name");
+			// alert("Please enter a valid product name");
+      validate(name_input,"Please enter a valid product name" );
 			return;
 		}
 
     var description_input = document.querySelector("#description");
 		if(description_input.value.trim() == "" || !isNaN(description_input.value.trim()))
 		{
-			alert("Please enter a valid description");
+			// alert("Please enter a valid description");
+      validate(description_input,"Please enter a valid description" );
 			return;
 		}
     var brand_input = document.querySelector("#brand");
 		if(brand_input.value.trim() == "" || !isNaN(brand_input.value.trim()))
 		{
-			alert("Please enter a valid brand");
+			// alert("Please enter a valid brand");
+      validate(brand_input,"Please enter a valid brand" );
 			return;
 		}
 		var quantity_input = document.querySelector("#quantity");
 		if(quantity_input.value.trim() == "" || isNaN(quantity_input.value.trim()))
 		{
-			alert("Please enter a valid quantity");
+			// alert("Please enter a valid quantity");
+      validate(quantity_input, "Please enter a valid quantity" );
 			return;
 		}
 
 		var category_input = document.querySelector("#category");
 		if(category_input.value.trim() == "" || isNaN(category_input.value.trim()))
 		{
-			alert("Please enter a valid category");
+			// alert("Please enter a valid category");
+      validate(category_input, "Please enter a valid category");
 			return;
 		}
 
 		var price_input = document.querySelector("#price");
 		if(price_input.value.trim() == "" || isNaN(price_input.value.trim()))
 		{
-			alert("Please enter a valid price");
+			// alert("Please enter a valid price");
+      validate(price_input,"Please enter a valid price");
 			return;
 		}
 
  		var image_input = document.querySelector("#image");
 		if(image_input.files.length == 0)
 		{
-			alert("Please enter a valid main image");
+			// alert("Please enter a valid main image");
+      validate(image_input,"Please enter a valid main image" );
 			return;
 		}
 
+    const list = document.querySelectorAll('.validate');
+    for (let e of list ) {
+      e.classList.add('hide');
+    }
  		//create a form
 		var data = new FormData();
 
@@ -460,14 +542,16 @@
     var name_input = document.querySelector("#edit_name");
     if(name_input.value.trim() == "" || !isNaN(name_input.value.trim()))
     {
-      alert("Please enter a valid product name");
+      // alert("Please enter a valid product name");
+      validate(name_input,"Please enter a valid product name" );
       return;
     }
 
 		var description_input = document.querySelector("#edit_description");
 		if(description_input.value.trim() == "" || !isNaN(description_input.value.trim()))
 		{
-			alert("Please enter a valid description");
+			// alert("Please enter a valid description");
+      validate(description_input,"Please enter a valid description" );
 			return;
 		}
 
@@ -475,28 +559,32 @@
     var brand_input = document.querySelector("#edit_brand");
 		if(brand_input.value.trim() == "" || !isNaN(brand_input.value.trim()))
 		{
-			alert("Please enter a valid brand");
+			// alert("Please enter a valid brand");
+      validate(brand_input,"Please enter a valid brand" );
 			return;
 		}
 
 		var quantity_input = document.querySelector("#edit_quantity");
 		if(quantity_input.value.trim() == "" || isNaN(quantity_input.value.trim()))
 		{
-			alert("Please enter a valid quantity");
+			// alert("Please enter a valid quantity");
+      validate(quantity_input, "Please enter a valid quantity" );
 			return;
 		}
 
 		var category_input = document.querySelector("#edit_category");
 		if(category_input.value.trim() == "" || isNaN(category_input.value.trim()))
 		{
-			alert("Please enter a valid category");
+			// alert("Please enter a valid category");
+      validate(category_input, "Please enter a valid category");
 			return;
 		}
 
 		var price_input = document.querySelector("#edit_price");
 		if(price_input.value.trim() == "" || isNaN(price_input.value.trim()))
 		{
-			alert("Please enter a valid price");
+			// alert("Please enter a valid price");
+      validate(price_input,"Please enter a valid price");
 			return;
 		}
 
@@ -581,7 +669,6 @@
 
 	function handle_result(result)
 	{
- console.log(result);
 		if(result != ""){
 			var obj = JSON.parse(result);
 
@@ -592,7 +679,7 @@
 				{
 					if(obj.message_type == "info")
 					{
-						alert(obj.message);
+						// alert(obj.message);
 						show_add_new();
 
 						var table_body = document.querySelector("#table_body");
@@ -669,16 +756,13 @@
 
 	function delete_row(id)
 	{
-
-		if(!confirm("Are you sure you want to delete this row?"))
-		{
-			return;
+		EDIT_ID = id
+		var popup = document.querySelector(".popup");
+		if (!popup.classList.contains('hide')) {
+			popup.classList.add("hide");
+		} else {
+			popup.classList.remove("hide")
 		}
-
- 		send_data({
- 			data_type: "delete_row",
- 			id:id
- 		});
 	}
 
 	function disable_row(id,state)
