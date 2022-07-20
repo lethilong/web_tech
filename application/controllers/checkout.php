@@ -54,19 +54,18 @@ Class Checkout extends Controller {
 		
 		$data['page_title'] = "Checkout Summary";
 
-		if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_SESSION['POST_DATA'])){
+		if($_SERVER['REQUEST_METHOD'] == "POST" && isset($data['order_details'])){
 
- 			$sessionid = session_id();
-			$user_url = "";
-			if(isset($_SESSION['user_url'])){
-				$user_url = $_SESSION['user_url'];
+			$user_token = "";
+			if(isset($_SESSION['token'])){
+				$user_token = $_SESSION['token'];
 			}
 
 			$order = $this->load_model('Order');
 			$_SESSION['POST_DATA']['total'] = get_total($ROWS);
-			$_SESSION['POST_DATA']['description'] = get_order_id();
+			// $_SESSION['POST_DATA']['description'] = get_order_id();
 
-			$order->save_order($_SESSION['POST_DATA'],$ROWS,$user_url,$sessionid);
+			$order->save_order($_SESSION['POST_DATA'],$ROWS,$user_token);
 			$data['errors'] = $order->errors;
 			
 			//unset($_SESSION['POST_DATA']);
