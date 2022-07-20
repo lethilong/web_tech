@@ -153,7 +153,7 @@ class Product extends Controller {
 
 				if($_SESSION['error'] != "")
 				{
-          $arr['message'] = $_SESSION['error'];
+          			$arr['message'] = $_SESSION['error'];
 					$_SESSION['error'] = "";
 					$arr['message_type'] = "error";
 					$arr['data'] = "";
@@ -161,7 +161,7 @@ class Product extends Controller {
 
 					echo json_encode($arr);
 				}
-        else
+        		else
 				{
 					$arr['message'] = "Product added successfully!";
 					$arr['message_type'] = "info";

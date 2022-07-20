@@ -17,8 +17,32 @@
 	}
 
 </style>
-<table class="table table-striped table-advance table-hover">
 
+<table class="table table-striped table-advance table-hover">
+	<?php if(isset($data['page_title']) && $data['page_title'] == "Admin - Admins"): ?>
+	<h4>Quản trị viên <button class="btn btn-primary btn-xs" onclick="show_add_new(event)"><i class="fa fa-plus"></i> Thêm quản trị viên</button></h4>
+
+	<!--add new category-->
+	<div class="add_new hide">
+
+		<h4 class="mb">Thêm mới quản trị viên</i> </h4>
+		<form class="form-horizontal style-form" method="post">
+			<div class="form-group">
+				<label class="col-sm-2 col-sm-2 control-label">Danh mục</label>
+				<div class="col-sm-10">
+					<input id="category" name="category" type="text" class="form-control" autofocus>
+				</div>
+			</div>
+			<br><br style="clear: both;"><br>
+			<button type="button" class="btn btn-warning" onclick="show_add_new(event)" style="position:absolute;bottom:10px; left:10px;">Đóng</button>
+			<button type="button" class="btn btn-primary" onclick="collect_data(event)" style="position:absolute;bottom:10px; right:10px;">Lưu</button>
+
+		</form>
+
+		<br><br>
+	</div>
+	<!--add new category end-->
+	<?php endif; ?>
 	<thead>
 		<tr><th>Mã tài khoản</th><th>Tên</th><th>Email</th><th>Ngày tạo</th>
 		<!-- <th>Orders count</th><th>...</th> -->

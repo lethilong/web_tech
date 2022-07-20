@@ -1,7 +1,12 @@
 <?php $this->view("components/header",$data); ?>
-    <section id="cart_items" style="margin-top: -50px;">
+    <section id="cart_items" >		
         <div class="container">
-
+            <div class="breadcrumbs">
+				<ol class="breadcrumb">
+				  <li><a href="<?=ROOT?>home">Home</a></li>
+				  <li class="active">Check out</li>
+				</ol>
+		    </div><!--/breadcrums-->
             <div class="table-responsive cart_info"  style="margin-top: -50px;">
                 <table class="table table-condensed">
                     <thead>
@@ -27,7 +32,7 @@
                                         <p>prod ID: <?=$row->id?></p>
                                     </td>
                                     <td class="cart_price">
-                                        <p>$<?=$row->price?></p>
+                                        <p><?=number_format($row->price)?></p>
                                     </td>
                                     <td class="cart_quantity">
                                         <div class="cart_quantity_button">
@@ -37,7 +42,7 @@
                                         </div>
                                     </td>
                                     <td class="cart_total">
-                                        <p class="cart_total_price"><?=$row->price * $row->cart_qty?> VND</p>
+                                        <p class="cart_total_price"><?=number_format($row->price * $row->cart_qty)?> VND</p>
                                     </td>
                                     <td class="cart_delete">
                                         <a class="cart_quantity_delete" delete_id="<?=$row->id?>" onclick="delete_item(this.getAttribute('delete_id'))" href="<?=ROOT?>cart/remove/<?=$row->id?>"><i class="fa fa-times"></i></a>
@@ -53,13 +58,10 @@
                             </tr>
                         <?php endif; ?>
                     </tbody>
-                </table><div class="pull-right" style="font-size: 25px;">Tổng chi phí: <?=number_format($sub_total,2)?> VND</div>
+                </table><div class="pull-right" style="font-size: 25px;">Tổng chi phí: <?=number_format($sub_total)?> VND</div>
             </div>
             <a href="<?=ROOT?>checkout">
-                <input type="button" class="btn btn-warning pull-right" value="Checkout >" name="">
-            </a>
-            <a href="<?=ROOT?>shop">
-                <input type="button" class="btn btn-warning pull-left" value="< Continue shopping" name="">
+                <input type="button" class="btn btn-warning pull-right" value="Mua hàng" name="">
             </a>
         </div>
     </section> <!--/#cart_items-->

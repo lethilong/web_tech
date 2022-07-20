@@ -54,7 +54,7 @@ Class Admin extends Controller {
 		$this->view("admin/categories",$data);
 	}
 
-  public function products()
+  	public function products()
 	{
 
 		$User = $this->load_model('User');
@@ -78,5 +78,20 @@ Class Admin extends Controller {
 		$data['page_title'] = "Admin - Products";
 		$data['current_page'] = "products";
 		$this->view("admin/products",$data);
+	}
+
+	public function orders() {
+		$User = $this->load_model('User');
+		$Order = $this->load_model('Order');
+		$user_data = $User->checkLogin(["admin"]);
+		if(is_object($user_data)) {
+			$data['user_data'] = $user_data;
+		}
+
+		$orders = $Order->get_all_orders();
+		$data['page_title'] = 'orders';
+		$data['current_page'] = 'orders';
+
+		$this->view('admin/orders', $data);
 	}
 }

@@ -221,4 +221,8 @@ Class UserModel {
 		return $text;
 	}
 
+	public function addAdmin() {
+		
+	}
+
 }
