@@ -90,6 +90,26 @@ Class Admin extends Controller {
 		}
 
 		$orders = $Order->get_all_orders();
+
+		if(is_array($orders)){
+			foreach ($orders as $key => $row) {
+				# code...
+				$details = $Order->get_order_details($row->id);
+				$orders[$key]->grand_total = 0;
+
+				if(is_array($details)){
+					$totals = array_column($details, "total");
+					$grand_total = array_sum($totals);
+					$orders[$key]->grand_total = $grand_total;
+				}
+
+				$orders[$key]->details = $details;
+
+				$user = $User->get_user($row->user_token);
+				$orders[$key]->user = $user;
+			}
+		}
+		$data['orders'] = $orders;
 		$data['page_title'] = 'orders';
 		$data['current_page'] = 'orders';
 

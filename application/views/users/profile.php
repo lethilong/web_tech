@@ -77,7 +77,7 @@
 	<!--end profile data-->
 
 	<br><br style="clear: both;">
-	<?php if(is_array($orders)):?>
+	<?php if(is_array($data['orders'])):?>
 
 			<table class="table">
 				<thead>

@@ -47,37 +47,31 @@ Class Checkout extends Controller {
 		}
 
 		$data['order_details'] = $ROWS;
-
-		if(isset($_SESSION['POST_DATA'])){
-			$data['orders'][] = $_SESSION['POST_DATA'];
-		}
+		$_SESSION['POST_DATA']['details'] = $ROWS;
+		$_SESSION['POST_DATA']['total'] = get_total($ROWS);
 		
 		$data['page_title'] = "Checkout Summary";
-
-		if($_SERVER['REQUEST_METHOD'] == "POST" && isset($data['order_details'])){
-
-			$user_token = "";
-			if(isset($_SESSION['token'])){
-				$user_token = $_SESSION['token'];
-			}
-
-			$order = $this->load_model('Order');
-			$_SESSION['POST_DATA']['total'] = get_total($ROWS);
-			// $_SESSION['POST_DATA']['description'] = get_order_id();
-
-			$order->save_order($_SESSION['POST_DATA'],$ROWS,$user_token);
-			$data['errors'] = $order->errors;
-			
-			//unset($_SESSION['POST_DATA']);
-			unset($_SESSION['CART']);
-
-			header("Location:".ROOT."checkout/pay");
-			die;
-		}
 
 		$data['order_details'] = $ROWS;
 		$this->view("checkout/checkout",$data);
 
 
     }
+
+	public function ajax_checkout(){
+		
+		$data = file_get_contents("php://input");
+		print($data);
+		$data = json_decode($data);
+		print(is_object($data));
+		show($_SESSION['POST_DATA']);
+		print($_SESSION['token']);
+		$Order = $this->load_model('Order');
+		$Order->save_order($_SESSION['token'], $_SESSION['POST_DATA']['details'],$data->delivery_name, $data->delivery_phone, $data->delivery_address,$_SESSION['POST_DATA']['total']);
+		unset($_SESSION['POST_DATA']);
+		unset($_SESSION['CART']);
+		$arr["success"] = true;
+		echo json_encode($arr);
+
+	}
 }

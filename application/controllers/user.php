@@ -44,7 +44,7 @@ Class User extends Controller
 		}
 
         if(is_array($profile_data)){
-			$orders = $Order->get_orders_by_user($profile_data->url_address);
+			$orders = $Order->get_orders_by_user($_SESSION['token']);
 		}else{
 			$orders = false;
 		}
@@ -61,6 +61,7 @@ Class User extends Controller
 			}
 		}
         
+		$data['orders'] = $orders;
 		$data['profile_data'] = $profile_data;
 		$data['page_title'] = "Profile";
 

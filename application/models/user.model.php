@@ -221,6 +221,25 @@ Class UserModel {
 		return $text;
 	}
 
+	public function get_user($token)
+	{
+
+		$db = Database::newInstance();
+		$arr = false;
+
+		$arr['token'] = addslashes($token);
+		$query = "select * from users where token = :token limit 1";
+
+		$result = $db->read($query,$arr);
+		
+		if(is_array($result))
+		{
+			return $result[0];
+		}
+
+		return false;
+	}
+
 	public function addAdmin() {
 		
 	}
