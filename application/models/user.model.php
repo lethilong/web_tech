@@ -240,8 +240,67 @@ Class UserModel {
 		return false;
 	}
 
-	public function addAdmin() {
+	public function addAdmin($POST) {
+		$db = Database::getInstance();
+		date_default_timezone_set("Asia/Ho_Chi_Minh");
+
+		$data = [
+			"token" => "",
+			"name" => trim($POST->name),
+			"email" => trim($POST->email),
+			"password" => trim($POST->password),
+			"date" => date("Y-m-d H:i:s"),
+			"role"=>"admin"
+		];
+
+        if(empty($data['name'])) {
+			$_SESSION['error'] = "Họ và tên không được để trống";
+			return;
+		}
+
+        if(empty($data['email']) || !preg_match("/^[a-zA-Z0-9_-]+@[a-zA-Z]+.[a-zA-Z]+$/", $data['email'])) {
+			$_SESSION['error'] = "Email không hợp lệ";
+			return;
+		}
+
+		if(empty($data['password'])) {
+			$_SESSION['error'] = "Mật khẩu không hợp lệ";
+			return;
+		}
+        //check if email already exists
+		$sql = "select email from users where email = :email limit 1";
+		$arr['email'] = $data['email'];
+		$check = $db->read($sql, $arr);
+
+		if(is_array($check)) {
+			$_SESSION['error'] = "Email đã được sử dụng";
+			return;
+		}
+
 		
+		$arr=false;
+
+        $data['token'] = $this->getRandomStringMax(60);
+
+		$arr = false;
+		$sql = "select * from users where token = :token limit 1";
+		$arr['token'] = $data['token'];
+		$check = $db->read($sql, $arr);
+		if(is_array($check)) {
+			$data['token'] = $this->getRandomStringMax(60);
+		}
+
+        if($_SESSION['error'] == ""){
+			//save
+			$data['password'] = hash('sha1',$data['password']);
+			$sql = "insert into users (token, name, email, password, date, role) values (:token, :name, :email,:password, :date, :role)";
+
+			$result = $db->write($sql, $data);
+			if ($result) {
+				return $result;
+			}
+		}
+
 	}
 
 }

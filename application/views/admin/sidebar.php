@@ -12,23 +12,6 @@
                   <h5 class="centered"><?=$data['user_data']->name?></h5>
               	  <h5 class="centered" style="font-size: 11px;"><?=$data['user_data']->email?></h5>
 
-
-                  <!-- <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-dashboard"></i>
-                          <span>Dashboard</span>
-                      </a>
-
-                  </li> -->
-
-                  <!-- <li class="sub-menu">
-                      <a <?=(isset($current_page) && $current_page == "dashboard") ? ' class="active" ':''; ?> href="<?=ROOT?>admin" >
-                          <i class="fa fa-barcode"></i>
-                          <span>Dashboard</span>
-                      </a>
-
-                  </li> -->
-
                   <li class="sub-menu">
                       <a <?=(isset($current_page) && $current_page == "products") ? ' class="active" ':''; ?> href="<?=ROOT?>admin/products" >
                           <i class="fa fa-barcode"></i>
@@ -64,27 +47,19 @@
                        </ul>
                   </li>
 
-                  <!-- <li class="sub-menu">
-                      <a <?=(isset($current_page) && $current_page == "messages") ? ' class="active" ':''; ?> href="<?=ROOT?>admin/messages" >
-                          <i class="fa fa-envelope"></i>
-                          <span>Messages</span>
-                      </a>
-
-                  </li> -->
-
 
                   <li class="sub-menu">
                       <a <?=(isset($current_page) && $current_page == "settings") ? ' class="active" ':''; ?> href="<?=ROOT?>admin/settings" >
                           <i class="fa fa-cogs"></i>
                           <span> Cài đặt</span>
                       </a>
-                      <ul class="sub">
+                      <!-- <ul class="sub">
                           <li><a  href="<?=ROOT?>admin/settings/slider_images">Ảnh quảng cáo</a></li>
                       </ul>
 
                       <ul class="sub">
                           <li><a  href="<?=ROOT?>admin/settings/socials">Liên hệ</a></li>
-                      </ul>
+                      </ul> -->
 
 
                   </li>
@@ -94,10 +69,6 @@
       </aside>
       <!--sidebar end-->
 
-
-      <!-- **********************************************************************************************************************************************************
-      MAIN CONTENT
-      *********************************************************************************************************************************************************** -->
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper site-min-height">
