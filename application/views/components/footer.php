@@ -56,11 +56,11 @@
 					<div class="col-sm-3 col-sm-offset-1">
 						<div class="single-widget">
 							<h2> Liên hệ</h2>
-							<form action="#" class="searchform">
+							<!-- <form action="#" class="searchform">
 								<input type="text" placeholder="nhập email" />
 								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
 								<p>Cập nhật tin tức mới nhất từ chúng tôi</p>
-							</form>
+							</form> -->
 						</div>
 					</div>
 
