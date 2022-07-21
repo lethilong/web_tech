@@ -46,23 +46,6 @@
                           <li><a  href="<?=ROOT?>admin/users/admins">Quản trị viên</a></li>
                        </ul>
                   </li>
-
-
-                  <li class="sub-menu">
-                      <a <?=(isset($current_page) && $current_page == "settings") ? ' class="active" ':''; ?> href="<?=ROOT?>admin/settings" >
-                          <i class="fa fa-cogs"></i>
-                          <span> Cài đặt</span>
-                      </a>
-                      <!-- <ul class="sub">
-                          <li><a  href="<?=ROOT?>admin/settings/slider_images">Ảnh quảng cáo</a></li>
-                      </ul>
-
-                      <ul class="sub">
-                          <li><a  href="<?=ROOT?>admin/settings/socials">Liên hệ</a></li>
-                      </ul> -->
-
-
-                  </li>
               </ul>
               <!-- sidebar menu end-->
           </div>

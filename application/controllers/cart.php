@@ -105,8 +105,8 @@ Class Cart extends Controller
 			
 		}
 
-		// header("Location: ". ROOT . "cart");
-		// die;
+		header("Location: ". ROOT . "cart");
+		die;
 	}
 
 	public function add_quantity($id = '')
