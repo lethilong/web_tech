@@ -160,14 +160,9 @@
 			EDIT_ID = id;
 		}
 		var show_add_box = document.querySelector(".edit_category");
-		// show_add_box.style.right = (e.clientX - 700) + "px";
-		// show_add_box.style.top = (e.clientY - 120) + "px";
 
 		var category_input = document.querySelector("#category_edit");
 		category_input.value = "";
-
-		// var parent_input = document.querySelector("#parent_edit");
-		// parent_input.value = parent;
 		if (!show_add_box.classList.contains("hide") && id == EDIT_ID) {
 
 			show_add_box.classList.add("hide");

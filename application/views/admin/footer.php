@@ -9,7 +9,7 @@
 <!--footer start-->
       <footer class="site-footer">
           <div class="text-center">
-              .webTech 2022
+              .webTech | 2022
           </div>
       </footer>
       <!--footer end-->
@@ -21,18 +21,12 @@
     <script src="<?=ASSETS?>admin/js/jquery-ui-1.9.2.custom.min.js"></script>
     <script src="<?=ASSETS?>admin/js/jquery.ui.touch-punch.min.js"></script>
     <script class="include" type="text/javascript" src="<?=ASSETS?>admin/js/jquery.dcjqaccordion.2.7.js"></script>
-    <!-- <script src="<?=ASSETS?>admin/js/jquery.scrollTo.min.js"></script> -->
-    <!-- <script src="<?=ASSETS?>admin/js/jquery.nicescroll.js" type="text/javascript"></script> -->
-
-
     <!--common script for all pages-->
     <script src="<?=ASSETS?>admin/js/common-scripts.js"></script>
 
     <!--script for this page-->
     
   <script>
-      //custom select box
-
       $(function(){
           $('select.styled').customSelect();
       });

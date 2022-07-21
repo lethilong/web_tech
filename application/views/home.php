@@ -12,7 +12,7 @@
 				
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center">Featured Items</h2>
+						<h2 class="title text-center">Sản phẩm</h2>
 						
 						<?php if(is_array($ROWS)): ?>
 						<?php foreach($ROWS as $row): ?>

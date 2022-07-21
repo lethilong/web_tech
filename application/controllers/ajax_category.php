@@ -26,7 +26,7 @@ class Ajax_category extends Controller
 
 					echo json_encode($arr);
 				} else {
-					$arr['message'] = "Category added successfully!";
+					$arr['message'] = "Thêm thành công!";
 					$arr['message_type'] = "info";
 					$cats = $category->get_all();
 					$arr['data'] = $category->make_table($cats);
@@ -47,7 +47,7 @@ class Ajax_category extends Controller
 
 					echo json_encode($arr);
 				} else {
-					$arr['message'] = "Category update!";
+					$arr['message'] = "Đã cập nhật danh mục!";
 					$arr['message_type'] = "info";
 					$cats = $category->get_all();
 					$arr['data'] = $category->make_table($cats);
@@ -58,7 +58,7 @@ class Ajax_category extends Controller
 			}
 			if ($data->data_type == 'delete_row') {
 				$check = $category->delete($data);
-				$arr['message'] = "Delete success!";
+				$arr['message'] = "Xoá thành công!";
 				$cats = $category->get_all();
 				$arr['message_type'] = "info";
 				$arr['data_type'] = "delete_row";
