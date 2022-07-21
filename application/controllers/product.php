@@ -26,8 +26,8 @@ class Product extends Controller {
 		$DB = Database::newInstance();
 
 		if($search){
-			$arr['description'] = "%". $find . "%";
-			$ROWS = $DB->read("select * from products where description like :description or name like :description or brand like :description",$arr);
+			$arr['name'] = "%". $find . "%";
+			$ROWS = $DB->read("select * from products where name like :name or name like :description or brand like :name",$arr);
 		}else{
 			$ROWS = $DB->read("select * from products");
 		}
