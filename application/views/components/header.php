@@ -41,9 +41,9 @@
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<?php if(isset($data['user_data'])): ?>
+								<!-- <?php if(isset($data['user_data'])): ?>
 									<li><a href="<?=ROOT?>user/profile"><i class="fa fa-user"></i>Tài khoản</a></li>
-								<?php endif; ?>
+								<?php endif; ?> -->
 								<li><a href="<?=ROOT?>product"><i class="fa fa-crosshairs"></i>Sản phẩm</a></li>
 								<li><a href="<?=ROOT?>cart"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
 
