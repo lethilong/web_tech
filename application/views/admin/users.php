@@ -101,7 +101,7 @@
 				<?php if(isset($users) && is_array($users)):?>
 					<?php foreach($users as $user):?>
 
-						<tr ><td><?=$user->id?></td><td><a href="<?=ROOT?>user/profile/<?=$user->token?>"><?=$user->name?></a></td><td><?=$user->email?></td><td><?=date("jS M Y H:i a",strtotime($user->date))?></td>
+						<tr ><td><?=$user->id?></td><td><a href="<?=ROOT?>user/profile/<?=$user->token?>"><?=$user->name?></a></td><td><?=$user->email?></td><td><?=date("jS M Y H:i a",strtotime($user->date . "7 hours"))?></td>
 
 							<!-- <td>
 								<?=$user->orders_count?>
