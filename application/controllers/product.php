@@ -7,7 +7,6 @@ class Product extends Controller {
   }
 
   public function index() 	{
-		//check if its a search
 		$search = false;
 		if(isset($_GET['find']))
 		{
