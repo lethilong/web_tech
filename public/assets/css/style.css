@@ -36,10 +36,10 @@ form .input-box input {
 }
 .input-box input:focus,
 .input-box input:valid {
-    border-color: #4070f4;
+    border-color: #FFCC33;
 }
 .input-box.btn input {
-    background-color: #0e4bf1;
+    background-color: #FE980F;
     color: #fff;
 }
 .input-box.btn input:hover{
@@ -51,7 +51,7 @@ form .text h3 {
     text-align: center;
 }
 form .text h3 a {
-    color: #4070f4;
+    color: #FE980F;
     text-decoration: none;
 }
 form .text h3 a:hover{

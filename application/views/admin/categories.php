@@ -121,13 +121,7 @@
 					</tr>
 				</thead>
 				<tbody id="table_body">
-					<!-- <tr>
-									<td>
-										<button onclick="console.log('Hello')"></button>
-									</td>
-								</tr> -->
 					<?= $tbl_rows ?>
-
 				</tbody>
 			</table>
 		</div><!-- /content-panel -->

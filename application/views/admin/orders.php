@@ -25,7 +25,7 @@
 	<tbody onclick="show_details(event)">
 		<?php foreach($orders as $order):?>
 
-			<tr style="position: relative;"><td><?=$order->id?></td><td><a href="<?=ROOT?>user/profile/<?=$order->user->token?>"><?=$order->user->name?></a></td><td><?=date("jS M Y H:i a",strtotime($order->date))?></td><td><?=number_format($order->total_price)?></td><td><?=$order->delivery_name?></td><td><?=$order->delivery_phone?></td><td><?=$order->delivery_address?></td>
+			<tr style="position: relative;"><td><?=$order->id?></td><td><a href="<?=ROOT?>user/profile/<?=$order->user->token?>"><?=$order->user->name?></a></td><td><?=date("jS M Y H:i a",strtotime($order->date . '7 hours'))?></td><td><?=number_format($order->total_price)?></td><td><?=$order->delivery_name?></td><td><?=$order->delivery_phone?></td><td><?=$order->delivery_address?></td>
 				<td>
 					<i class="fa fa-arrow-down"></i>
 					<div class="js-order-details details hide" >

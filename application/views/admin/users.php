@@ -24,6 +24,17 @@
 		padding: 10px;
 		z-index: 2;
 	}
+	.popup {
+		background-color: #eae8e8;
+		box-shadow: 0px 0px 10px #aaa;
+		/* position: absolute; */
+		padding: 6px;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 250px;
+	}
 
 </style>
 <div class="row mt">
@@ -67,6 +78,18 @@
 
 				<br><br>
 			</div>
+
+			<div class="popup hide">
+
+					<h4 class="title_pu" id="pop-up"></h4>
+					<br><br>
+					<!-- <button type="button" class="btn btn-warning" onclick="close_popup(false)" style="position:absolute;bottom:10px; left:10px; width: 80px">Đóng</button> -->
+					<button type="button" class="btn btn-primary" onclick="close_popup(true)" style="position:absolute;bottom:10px; right:10px; width: 80px">Đóng</button>
+
+
+
+					<br><br>
+			</div>
 			<?php endif; ?>
 			<hr>
 			<thead>
@@ -78,7 +101,7 @@
 				<?php if(isset($users) && is_array($users)):?>
 					<?php foreach($users as $user):?>
 
-						<tr ><td><?=$user->id?></td><td><a href="<?=ROOT?>user/profile/<?=$user->token?>"><?=$user->name?></a></td><td><?=$user->email?></td><td><?=date("jS M Y H:i a",strtotime($user->date))?></td>
+						<tr ><td><?=$user->id?></td><td><a href="<?=ROOT?>user/profile/<?=$user->token?>"><?=$user->name?></a></td><td><?=$user->email?></td><td><?=date("jS M Y H:i a",strtotime($user->date . "7 hours"))?></td>
 
 							<!-- <td>
 								<?=$user->orders_count?>
@@ -125,20 +148,23 @@
 	}
 
 	function collect_data(e) {
+		show_add_new();
 
 		var name_input = document.querySelector("#name");
 		var email_input = document.querySelector("#email");
 		var password_input = document.querySelector("#password");
-		if (name_input.value.trim() == "" || !isNaN(name_input.value.trim())) {
-			alert("Vui lòng nhập tên hợp lệ");
-		}
+		// if (name_input.value.trim() == "" || !isNaN(name_input.value.trim())) {
+		// 	close_popup(true, "Vui lòng nhập tên hợp lệ");
+		// 	return;
+		// }
 
-		if (email_input.value.trim() == "" || !isNaN(email_input.value.trim())) {
-			alert("Vui lòng nhập email hợp lệ");
-		}
-		if (password_input.value.trim() == "") {
-			alert("Vui lòng nhập mật khẩu hợp lệ");
-		}
+		// if (email_input.value.trim() == "") {
+		// 	close_popup(true, "Vui lòng nhập email hợp lệ");
+		// 	return;
+		// }
+		// if (password_input.value.trim() == "") {
+		// 	close_popup(true, "Vui lòng nhập mật khẩu hợp lệ");
+		// }
 
 		var name = name_input.value.trim();
 		var email = email_input.value.trim();
@@ -173,39 +199,23 @@
 		if (result != "") {
 			var obj = JSON.parse(result);
 			console.log(obj.message);
-
-			// if (typeof obj.data_type != 'undefined') {
-
-			// 	if (obj.data_type == "add_new") {
-			// 		if (obj.message_type == "info") {
-			// 			alert(obj.message);
-			// 		}
-			// 	}
-			// }
+			close_popup(true, obj.message);
+			// window.location="<?=ROOT?>admin/users/admins";
 		}
-	}		
-
+	}
 	
+	function close_popup(action, message) {
+		var popup = document.querySelector(".popup");
+		if (!popup.classList.contains('hide')) {
+			popup.classList.add("hide");
+		} else {
+			popup.classList.remove("hide")
+			var noti = document.querySelector("#pop-up");
+			noti.innerHTML = message;
+		}
+	}
 
 
-
-
-
-	// function collect_data(e) {
-
-	// var category_input = document.querySelector("#name");
-	// if (category_input.value.trim() == "" || !isNaN(category_input.value.trim())) {
-	// 	alert("Please enter a valid category name");
-	// }
-
-	// var category = category_input.value.trim();
-	// // var parent = parent_input.value.trim();
-	// send_data({
-	// 	category: category,
-	// 	// parent:parent,
-	// 	data_type: 'add_category'
-	// });
-	// }
 </script>	
  
 
